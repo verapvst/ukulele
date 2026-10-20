@@ -143,10 +143,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:26px 20px 80px}
 }
 .card-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11.5px;color:var(--muted);margin-top:2px}
 .dot{width:3px;height:3px;border-radius:999px;background:var(--faint)}
-.tag-badge{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:999px;font-weight:600}
-.tag-badge.review{background:var(--warn-soft);color:var(--warn)}
-.tag-badge.verified{background:var(--ok-soft);color:var(--ok)}
-.tag-badge.missing{background:var(--accent-soft);color:var(--accent-ink)}
 
 .empty{text-align:center;padding:64px 20px;color:var(--muted)}
 .empty h3{font-family:var(--serif);font-size:19px;color:var(--ink);margin-bottom:6px;font-weight:600}
@@ -314,37 +310,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:26px 20px 80px}
 .tn-start.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 @media (max-width:480px){ .tn-note{font-size:72px} .tn-panel{padding:18px 14px 20px} .tn-strings{gap:7px} }
 
-/* ============================================================ REVIEW MODE */
-.reviewmode{position:fixed;inset:0;z-index:80;background:var(--paper);display:flex;flex-direction:column}
-.review-top{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);
-  background:color-mix(in srgb,var(--paper) 90%,transparent);flex-wrap:wrap}
-.review-scope{padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:12.5px;max-width:260px}
-.review-count{margin-left:auto;font-family:var(--mono);font-size:13px;color:var(--muted)}
-.review-progress{height:3px;background:var(--line-soft)}
-.review-progress i{display:block;height:100%;background:var(--accent);transition:width .2s}
-.review-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.review-inner{max-width:1080px;margin:0 auto;padding:26px 24px 40px}
-.review-headrow{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.review-headrow h2{font-size:24px;letter-spacing:-.02em}
-.review-by{font-size:14px;color:var(--ink-soft);margin-top:2px}
-.review-badge{border:none;cursor:pointer}
-.review-facts{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:14px 0 20px}
-.review-grid{display:grid;gap:20px;grid-template-columns:minmax(0,1.4fr) minmax(0,320px);align-items:start}
-.review-pane{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden}
-.review-bar{display:flex;align-items:center;gap:10px;padding:12px 18px calc(12px + env(safe-area-inset-bottom));
-  border-top:1px solid var(--line);background:var(--card);flex-wrap:wrap}
-.review-done{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
-.review-done-mark{width:64px;height:64px;border-radius:999px;display:grid;place-items:center;background:var(--ok-soft);color:var(--ok);font-size:30px;margin-bottom:16px}
-.review-done h2{font-size:22px;letter-spacing:-.02em}
-.review-done p{color:var(--muted);font-size:14px;margin-top:6px;max-width:360px}
-.lib-review-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;border:1px solid var(--accent-soft);
-  background:var(--accent-soft);color:var(--accent-ink);font-size:12.5px;font-weight:500}
-.lib-review-btn:hover{filter:brightness(.97)}
-@media (max-width:900px){
-  .review-grid{grid-template-columns:1fr}
-  .review-bar .btn{flex:1;justify-content:center;min-width:44%}
-}
-
 /* ============================================================ MODAL / FORMS */
 .overlay{
   position:fixed;inset:0;z-index:90;background:rgba(30,27,24,.42);backdrop-filter:blur(2px);
@@ -383,9 +348,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:26px 20px 80px}
 .sheet-row button{color:var(--muted);padding:4px 8px}
 .checks{display:flex;gap:20px;flex-wrap:wrap;margin-top:4px}
 .check{display:flex;align-items:center;gap:8px;font-size:13px}
-.status-seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.status-seg button{padding:7px 13px;font-size:12px;color:var(--ink-soft)}
-.status-seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
 .danger{color:var(--accent-ink)}
 .btn.danger-btn{border-color:var(--accent-soft);color:var(--accent-ink)}
 .btn.danger-btn:hover{background:var(--accent-soft)}
@@ -471,10 +433,44 @@ main{max-width:var(--maxw);margin:0 auto;padding:26px 20px 80px}
 <main id="view" tabindex="-1"></main>
 <div id="modal-root"></div>
 <div id="practice-root"></div>
-<div id="review-root"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script type="application/json" id="seed-data">[]</script>
+<script type="application/json" id="seed-data">[
+ {
+  "id": "a-thousand-years",
+  "title": "A Thousand Years",
+  "artist": "Christina Perri",
+  "category": "Pop",
+  "subcategory": "",
+  "language": "English",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 1,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "Am",
+   "F",
+   "G",
+   "Dm"
+  ],
+  "lyrics": "Heartbeats fast\nColours and promises\nHow to be brave\nHow can I love when I'm afraid to fall\nBut watching you stand alone\nAll of my doubt suddenly goes away somehow\nOne step closer\n\nI have died everyday waiting for you\nDarling don't be afraid I have loved you\nFor a thousand years\nI love you for a thousand more\n (pause)\n\nTime stands still\nBeauty in all she is\nI will be brave\nI will not let in if it takes away\nWhat's standing in front of me\nEvery breath\nEvery hour has come to this\nOne step closer\n\nI have died everyday waiting for you\nDarling don't be afraid I have loved you\nFor a thousand years\nI love you for a thousand more\nAnd all along I believed I would find you\nTime has brought your heart to me I have loved you\nFor a thousand years\nI love you for a thousand more\n\n   \n\nOne step closer\nOne step closer",
+  "lyricsWithChords": "[Verse 1]\n[C]Heartbeats fast\nColours and [Am]promises\nHow to be [F]brave\nHow can I [G]love when I'm [C]afraid to fall\nBut watching you [Am]stand alone\nAll of my [F]doubt suddenly [G]goes away [Dm]somehow\nOne step [F]clos[G]er\n\n[Chorus]\n[C]I have died everyday waiting for you\n[Am]Darling don't be afraid I have loved you\nFor [F]a thousand years\nI love you for a [G]thousand more\n[C] (pause)\n\n[Verse 2]\n[C]Time stands still\nBeauty in [Am]all she is\nI will be [F]brave\nI will not [G]let in if it [C]takes away\nWhat's standing in [Am]front of me\nEvery [F]breath\nEvery [G]hour has come to [Dm]this\nOne step [F]clos[G]er\n\n[Chorus]\n[C]I have died everyday waiting for you\n[Am]Darling don't be afraid I have loved you\nFor [F]a thousand years\nI love you for a [G]thousand more\n[C]And all along I believed I would find you\n[Am]Time has brought your heart to me I have loved you\nFor [F]a thousand years\nI love you for a [G]thousand more\n\n[Interlude]\n[C] [Am] [F] [G]\n\n[Dm]One [C]step clos[G]er\n[Am]One step [F]clos[G]er\n\n[Chorus – repeat]",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/A Thousand Years Uke tab by Christina Perri - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-20T00:00:00.000Z",
+  "updatedAt": "2026-10-20T00:00:00.000Z"
+ }
+]</script>
 <script>
 "use strict";
 /* ==========================================================================
@@ -537,7 +533,8 @@ const DEFAULT_CATEGORIES = (() => {
    ========================================================================== */
 const Store = (() => {
   // v2 keys: the library was reset to empty, so songs cached under the old v1 keys are ignored.
-  const K = { songs:"music.songs.v2", cats:"music.categories.v2", prefs:"music.prefs.v1", recent:"music.recent.v2" };
+  const K = { songs:"music.songs.v2", cats:"music.categories.v2", prefs:"music.prefs.v1", recent:"music.recent.v2",
+              patches:"music.patches.v2", deleted:"music.deleted.v2" };
   const DEFAULT_PREFS = { view:"grid", sort:"title", chordMode:"contains", showChords:true, fontStep:0, autoscrollSpeed:3, tuning:"standard", a4:440 };
 
   const read = (k, fb) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch(e){ return fb; } };
@@ -564,35 +561,66 @@ const Store = (() => {
       tags: Array.isArray(s.tags) ? s.tags.slice() : [],
       notes: s.notes || "",
       favorite: !!s.favorite,
-      verified: !!s.verified,
-      status: s.status || (s.verified ? "verified" : "review"),   // verified | review | missing
       createdAt: s.createdAt || nowISO(),
       updatedAt: s.updatedAt || s.createdAt || nowISO(),
     };
   }
 
-  let _songs = null, _cats = null;
-  function songs(){ if (!_songs){ _songs = (read(K.songs, null) || SEED).map(normalize); } return _songs; }
-  function persist(){ write(K.songs, _songs); }
+  /* The library = songs published with the app (SEED, in this file) + whatever this browser adds.
+     - _mine     songs you added/imported here (full records)
+     - _patches  your edits to published songs, stored as ONLY the changed fields — so when a published
+                 song is corrected in the repo, fields you never touched pick up the fix
+     - _deleted  published songs you removed
+     New published songs therefore always show up, even in a browser that already has saved data. */
+  let _mine = null, _patches = null, _deleted = null, _songs = null, _cats = null;
+  function load(){ if (_mine) return; _mine = read(K.songs, []); _patches = read(K.patches, {}); _deleted = read(K.deleted, []); }
+  function rebuild(){
+    load();
+    const own = new Set(_mine.map(s => s.id)), gone = new Set(_deleted);
+    const base = SEED.filter(s => !own.has(s.id) && !gone.has(s.id)).map(s => ({ ...s, ...(_patches[s.id] || {}) }));
+    _songs = [..._mine, ...base].map(normalize);
+  }
+  function songs(){ if (!_songs) rebuild(); return _songs; }
+  function save(){ write(K.songs, _mine); write(K.patches, _patches); write(K.deleted, _deleted); rebuild(); }
+  const seedSong = id => SEED.find(s => s.id === id);
 
   return {
     /* --- songs --- */
     getSongs(){ return songs().slice(); },
     getSong(id){ return songs().find(s => s.id === id) || null; },
     addSong(data){
+      load();
       const s = normalize({ ...data, id: uid(), createdAt: nowISO(), updatedAt: nowISO() });
-      _songs = [s, ...songs()]; persist(); return s;
+      _mine.unshift(s); save(); return s;
     },
     updateSong(id, patch){
-      const i = songs().findIndex(s => s.id === id); if (i < 0) return null;
-      _songs[i] = normalize({ ..._songs[i], ...patch, id, updatedAt: nowISO() });
-      persist(); return _songs[i];
+      load();
+      const cur = songs().find(s => s.id === id); if (!cur) return null;
+      const next = normalize({ ...cur, ...patch, id, updatedAt: nowISO() });
+      const i = _mine.findIndex(s => s.id === id);
+      if (i >= 0) _mine[i] = next;
+      else {                                   // a published song: remember only what changed
+        const base = normalize(seedSong(id)), d = { ...(_patches[id] || {}) };
+        for (const k of Object.keys(patch)){
+          if (k === "id" || k === "updatedAt") continue;
+          if (JSON.stringify(next[k]) === JSON.stringify(base[k])) delete d[k]; else d[k] = next[k];
+        }
+        if (Object.keys(d).length) { d.updatedAt = next.updatedAt; _patches[id] = d; } else delete _patches[id];
+      }
+      save(); return songs().find(s => s.id === id);
     },
-    deleteSong(id){ _songs = songs().filter(s => s.id !== id); persist(); Store.removeRecent(id); },
+    deleteSong(id){
+      load();
+      _mine = _mine.filter(s => s.id !== id);
+      if (seedSong(id) && !_deleted.includes(id)) _deleted.push(id);
+      delete _patches[id]; save(); Store.removeRecent(id);
+    },
     toggleFavorite(id){ const s = Store.getSong(id); if (s) return Store.updateSong(id, { favorite: !s.favorite }); },
 
     /* --- categories --- */
-    getCategories(){ if (!_cats) _cats = read(K.cats, null) || DEFAULT_CATEGORIES.slice(); return _cats.slice(); },
+    getCategories(){ if (!_cats) _cats = read(K.cats, null) || DEFAULT_CATEGORIES.slice();
+      const used = songs().map(s => s.category).filter(Boolean);
+      return [...new Set([..._cats, ...used])]; },
     addCategory(name){ name = String(name||"").trim(); if (!name) return; const c = Store.getCategories();
       if (!c.some(x => fold(x) === fold(name))){ c.push(name); _cats = c; write(K.cats, c); } },
     deleteCategory(name){ _cats = Store.getCategories().filter(c => c !== name); write(K.cats, _cats); },
@@ -610,18 +638,24 @@ const Store = (() => {
     exportAll(){ return { app:"my-music", version:1, exportedAt: nowISO(),
       songs: Store.getSongs(), categories: Store.getCategories(), preferences: Store.getPrefs() }; },
     importAll(obj, mode){
+      load();
       const incoming = (obj.songs || []).map(normalize);
-      if (mode === "replace"){ _songs = incoming; }
-      else { const byKey = new Map(songs().map(s => [s.id, s]));
-        for (const s of incoming) byKey.set(s.id, s);
-        _songs = [...byKey.values()];
+      if (mode === "replace"){
+        _mine = incoming; _patches = {};
+        const keep = new Set(incoming.map(s => s.id));
+        _deleted = SEED.map(s => s.id).filter(id => !keep.has(id));
+      } else {
+        const byId = new Map(_mine.map(s => [s.id, s]));
+        for (const s of incoming){ byId.set(s.id, s); _deleted = _deleted.filter(id => id !== s.id); }
+        _mine = [...byId.values()];
       }
-      persist();
+      save();
       if (Array.isArray(obj.categories) && obj.categories.length){ _cats = [...new Set(obj.categories)]; write(K.cats, _cats); }
       if (obj.preferences) Store.savePreferences(obj.preferences);
-      return _songs.length;
+      return songs().length;
     },
-    resetLibrary(){ _songs = SEED.map(normalize); persist();
+    /** drop everything stored in this browser: back to exactly the songs published with the app */
+    resetLibrary(){ _mine = []; _patches = {}; _deleted = []; save();
       _cats = DEFAULT_CATEGORIES.slice(); write(K.cats, _cats);
       write(K.recent, []); }
   };
@@ -714,11 +748,9 @@ function render(){
   closeChordPop();
   const { name, param } = parseHash();
   const root = $("#view");
-  if (name !== "review") destroyReview();
   if (name !== "tuner") Tuner.leave();
   if (name === "song")      return renderSong(root, param);
   if (name === "practice")  return renderPractice(param);
-  if (name === "review")    return renderReview(param);
   if (name === "tuner")     return renderTuner(root);
   if (name === "settings")  return renderSettings(root);
   return renderLibrary(root);
@@ -741,13 +773,6 @@ function renderLibrary(root){
     el("h2", {}, "My Music"),
     el("span", { class:"count" }, `${list.length} of ${all.length} song${all.length===1?"":"s"}`)
   );
-  const pending = Review.count("flagged");
-  if (pending){
-    head.append(el("button", { class:"lib-review-btn", style:"margin-left:auto",
-      onclick:() => Review.start("flagged") },
-      el("span", { html:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>' }),
-      `Review ${pending}`));
-  }
   root.append(head);
   root.append(tunerCard());
 
@@ -866,10 +891,6 @@ function songCard(s){
   const meta = el("div", { class:"card-meta" });
   const bits = [s.category, s.difficulty, s.instrument, s.capo ? `Capo ${s.capo}` : null, s.key ? `Key ${s.key}` : null].filter(Boolean);
   bits.forEach((b,i) => { if (i) meta.append(el("span", { class:"dot" })); meta.append(el("span", {}, b)); });
-  const badge = s.status === "verified" ? ["verified","✓ Verified"]
-              : s.status === "missing"  ? ["missing","⚠ Missing info"]
-              : ["review","⚠ Needs review"];
-  meta.append(el("span", { class:`tag-badge ${badge[0]}`, style:"margin-left:auto" }, badge[1]));
   card.append(meta);
   return card;
 }
@@ -1040,9 +1061,6 @@ function renderSong(root, id){
   ));
 
   const facts = el("div", { class:"song-facts" });
-  const badge = s.status === "verified" ? ["verified","✓ Verified"]
-            : s.status === "missing"  ? ["missing","⚠ Missing info"] : ["review","⚠ Needs review"];
-  facts.append(el("span", { class:`tag-badge ${badge[0]}` }, badge[1]));
   [s.category, s.subcategory, s.language, s.difficulty, s.instrument,
    s.key && `Key ${s.key}`, s.capo && `Capo ${s.capo}`, s.tuning && `Tuning ${s.tuning}`]
    .filter(Boolean).forEach(b => facts.append(el("span", { class:"fact" }, b)));
@@ -1087,7 +1105,7 @@ function renderSong(root, id){
     ["Language", s.language], ["Difficulty", s.difficulty], ["Instrument", s.instrument],
     ["Key", s.key], ["Capo", s.capo || ""], ["Tuning", s.tuning],
     ["Chords", s.chords.join(" · ")], ["Tags", s.tags.map(t=>"#"+t).join(" ")],
-    ["Status", badge[1]], ["Added", (s.createdAt||"").slice(0,10)], ["Updated", (s.updatedAt||"").slice(0,10)],
+    ["Added", (s.createdAt||"").slice(0,10)], ["Updated", (s.updatedAt||"").slice(0,10)],
   ].filter(([,v]) => v !== "" && v != null);
   infoRows.forEach(([k,v]) => ib.append(el("div", { style:"display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--line-soft)" },
     el("span", { style:"color:var(--muted);min-width:96px;font-size:12.5px" }, k), el("span", {}, String(v)))));
@@ -1484,178 +1502,6 @@ function renderTuner(root){
 }
 
 /* ==========================================================================
-   REVIEW MODE  —  step through the verification queue one song at a time.
-   ========================================================================== */
-const Review = (() => {
-  const SCOPES = {
-    flagged:  { label:"Needs review + missing", test:s => s.status !== "verified" },
-    review:   { label:"Needs review only",      test:s => s.status === "review" },
-    missing:  { label:"Missing info only",      test:s => s.status === "missing" },
-    all:      { label:"Every song",              test:() => true },
-  };
-  let ids = [], pos = 0, scope = "flagged", verifiedThisPass = 0;
-
-  function queueFor(sc){
-    const t = (SCOPES[sc] || SCOPES.flagged).test;
-    return Store.getSongs().filter(t).sort((a,b) => fold(a.title).localeCompare(fold(b.title))).map(s => s.id);
-  }
-  function count(sc="flagged"){ return queueFor(sc).length; }
-
-  function start(sc, startId){
-    scope = sc && SCOPES[sc] ? sc : "flagged";
-    ids = queueFor(scope);
-    verifiedThisPass = 0;
-    pos = startId ? Math.max(0, ids.indexOf(startId)) : 0;
-    go(startId && ids.includes(startId) ? `#/review/${startId}` : "#/review");
-  }
-  function ensure(id){                        // called by renderReview on (re)entry
-    if (!ids.length) ids = queueFor(scope);
-    if (id){ const i = ids.indexOf(id); if (i >= 0) pos = i; }
-    pos = Math.min(Math.max(0, pos), Math.max(0, ids.length - 1));
-  }
-  function currentId(){ return ids[pos]; }
-  function setScope(sc){
-    const keep = currentId();
-    scope = sc; ids = queueFor(scope);
-    pos = Math.max(0, ids.indexOf(keep)); if (pos < 0) pos = 0;
-    go(ids.length ? `#/review/${ids[pos]}` : "#/review");
-  }
-  function go_(delta){
-    pos += delta;
-    if (pos >= ids.length){ go("#/review/done"); return; }
-    if (pos < 0) pos = 0;
-    go(`#/review/${ids[pos]}`);
-  }
-  function markGood(){
-    const id = currentId(); if (!id) return;
-    const s = Store.getSong(id);
-    if (s && s.status !== "verified"){ Store.updateSong(id, { status:"verified", verified:true }); verifiedThisPass++; }
-    go_(1);
-  }
-  function toggleVerified(){
-    const id = currentId(); if (!id) return;
-    const s = Store.getSong(id); if (!s) return;
-    const now = s.status === "verified" ? "review" : "verified";
-    Store.updateSong(id, { status: now, verified: now === "verified" });
-    render();
-  }
-  function drop(id){
-    const i = ids.indexOf(id); if (i >= 0) ids.splice(i, 1);
-    if (pos > i) pos--;
-    if (pos >= ids.length) go("#/review/done"); else go(`#/review/${ids[pos]}`);
-  }
-  function exit(){
-    const n = verifiedThisPass;
-    ids = []; pos = 0;
-    go("#/");
-    if (n) setTimeout(() => toast(`Review — ${n} song${n===1?"":"s"} marked verified`), 60);
-  }
-  return { SCOPES, start, ensure, setScope, next:() => go_(1), prev:() => go_(-1),
-           markGood, toggleVerified, drop, exit, currentId, count,
-           get pos(){ return pos; }, get total(){ return ids.length; }, get scope(){ return scope; },
-           get verifiedThisPass(){ return verifiedThisPass; } };
-})();
-
-function destroyReview(){ $("#review-root").replaceChildren(); if (parseHash().name !== "practice") document.body.style.overflow = ""; }
-
-function renderReview(param){
-  destroyPractice();
-  document.body.style.overflow = "hidden";
-
-  if (param === "done"){
-    Review.ensure();
-    const done = el("div", { class:"reviewmode" });
-    done.append(el("div", { class:"review-done" },
-      el("div", { class:"review-done-mark" }, "✓"),
-      el("h2", {}, Review.total ? "End of the queue" : "Nothing to review"),
-      el("p", {}, Review.verifiedThisPass
-        ? `You marked ${Review.verifiedThisPass} song${Review.verifiedThisPass===1?"":"s"} as verified this pass.`
-        : "Every song in this scope has been looked at."),
-      el("div", { style:"display:flex;gap:10px;margin-top:18px" },
-        Review.total ? el("button", { class:"btn", onclick:() => Review.start(Review.scope) }, "Run through again") : "",
-        el("button", { class:"btn primary", onclick:() => Review.exit() }, "Back to library"))));
-    $("#review-root").replaceChildren(done);
-    return;
-  }
-
-  Review.ensure(param);
-  const id = Review.currentId();
-  const s = id && Store.getSong(id);
-  if (!s){ Review.exit(); return; }
-  if (parseHash().param !== id) { history.replaceState(null, "", `#/review/${id}`); }
-
-  const badge = s.status === "verified" ? ["verified","✓ Verified"]
-            : s.status === "missing"  ? ["missing","⚠ Missing info"] : ["review","⚠ Needs review"];
-
-  const root = el("div", { class:"reviewmode" });
-
-  // -- top bar: exit · scope · progress
-  const scopeSel = el("select", { class:"review-scope", "aria-label":"Review scope",
-    onchange:e => Review.setScope(e.target.value) });
-  Object.entries(Review.SCOPES).forEach(([k,v]) =>
-    scopeSel.append(el("option", { value:k, selected:k===Review.scope }, `${v.label} · ${Review.count(k)}`)));
-
-  const top = el("div", { class:"review-top" },
-    el("button", { class:"btn sm ghost", onclick:() => Review.exit() }, "✕ Exit review"),
-    scopeSel,
-    el("span", { class:"review-count" }, `${Review.pos + 1} / ${Review.total}`));
-  root.append(top);
-  root.append(el("div", { class:"review-progress" },
-    el("i", { style:`width:${Review.total ? ((Review.pos)/Review.total*100) : 0}%` })));
-
-  // -- scrollable song body
-  const scroll = el("div", { class:"review-scroll" });
-  const inner = el("div", { class:"review-inner" });
-
-  const headRow = el("div", { class:"review-headrow" },
-    el("div", {},
-      el("h2", {}, s.title),
-      el("div", { class:"review-by" }, s.artist)),
-    el("button", { class:`tag-badge ${badge[0]} review-badge`, title:"Toggle verified", onclick:() => Review.toggleVerified() }, badge[1]));
-  inner.append(headRow);
-
-  const facts = el("div", { class:"review-facts" });
-  [s.category, s.language, s.difficulty, s.instrument, s.key && `Key ${s.key}`, s.capo && `Capo ${s.capo}`]
-    .filter(Boolean).forEach(f => facts.append(el("span", { class:"fact" }, f)));
-  s.chords.forEach(c => facts.append(el("span", { class:"fact chord", role:"button", tabindex:"0",
-    onclick:e => showChordPop(c, e.currentTarget) }, c)));
-  s.tags.forEach(t => facts.append(el("span", { class:"fact" }, "#"+t)));
-  s.sheetMusic.filter(x => x.src).forEach(x => facts.append(
-    el("a", { class:"fact", href: encPath(x.src), target:"_blank", rel:"noopener", style:"color:var(--accent-ink)" },
-      "compare with " + (x.label || "source") + " ↗")));
-  inner.append(facts);
-
-  const grid = el("div", { class:"review-grid" });
-  grid.append(el("div", { class:"review-pane" },
-    el("div", { class:"pane-head" }, "Lyrics + Chords"),
-    el("div", { class:"pane-body" }, renderSheet(s.lyricsWithChords))));
-  const cp = el("div", { class:"review-pane chord-pane" },
-    el("div", { class:"pane-head" }, "Chords"), buildChordChart(s));
-  grid.append(cp);
-  inner.append(grid);
-
-  if (s.notes) inner.append(el("div", { class:"notes-block", style:"margin-top:18px" },
-    el("h4", {}, "Notes"), el("p", {}, s.notes)));
-
-  scroll.append(inner);
-  root.append(scroll);
-
-  // -- action bar
-  const bar = el("div", { class:"review-bar" });
-  bar.append(
-    el("button", { class:"btn", disabled: Review.pos <= 0, onclick:() => Review.prev() }, "‹ Prev"),
-    el("span", { style:"flex:1" }),
-    el("button", { class:"btn", onclick:() => openSongForm(s, { returnTo:`#/review/${s.id}` }) }, "✎ Edit"),
-    el("button", { class:"btn danger-btn", onclick:() => confirmDelete(s, { returnTo:`#/review/${s.id}` }) }, "Delete"),
-    el("button", { class:"btn", onclick:() => Review.next() }, "Skip →"),
-    el("button", { class:"btn primary", onclick:() => Review.markGood() }, "✓ Looks good →"));
-  root.append(bar);
-
-  $("#review-root").replaceChildren(root);
-  scroll.scrollTop = 0;
-}
-
-/* ==========================================================================
    CHORD DIAGRAMS  —  ukulele (gCEA). Extension point: add shapes to SHAPES.
    frets: array of 4 numbers  [g,C,E,A]  · 0 = open · -1 = muted · n = fret
    ========================================================================== */
@@ -1751,14 +1597,12 @@ function field(label, control, hint){
 }
 function input(value, attrs={}){ return el("input", { type:"text", value: value ?? "", ...attrs }); }
 
-function openSongForm(existing, opts={}){
+function openSongForm(existing){
   const s = existing || {};
   const isEdit = !!existing;
-  const returnTo = opts.returnTo || null;   // hash to go back to after save/cancel
   const cats = Store.getCategories();
   let chords = (s.chords || []).slice();
   let sheets = (s.sheetMusic || []).map(x => ({ ...x }));
-  let status = s.status || "review";
 
   // -- controls
   const fTitle = input(s.title, { placeholder:"Song title", required:true });
@@ -1826,13 +1670,6 @@ function openSongForm(existing, opts={}){
   }
   paintSheets();
 
-  // status segmented
-  const statusSeg = el("div", { class:"status-seg", role:"group", "aria-label":"Verification status" });
-  [["review","⚠ Needs review"],["verified","✓ Verified"],["missing","Missing info"]].forEach(([v,l]) => {
-    statusSeg.append(el("button", { type:"button", "aria-pressed": status===v ? "true":"false",
-      onclick:(e) => { status = v; $$("button", statusSeg).forEach(b => b.setAttribute("aria-pressed","false")); e.currentTarget.setAttribute("aria-pressed","true"); } }, l));
-  });
-
   const body = el("div", {},
     field("Title", fTitle),
     el("div", { class:"grid-2" }, field("Artist", fArtist), field("Category", fCat)),
@@ -1844,7 +1681,6 @@ function openSongForm(existing, opts={}){
     field("Plain lyrics", fLyrics, "optional — lyrics only, for search / printing"),
     field("Sheet music", sheetWrap, "PDF or image. Path is relative to index.html"),
     field("Notes", fNotes),
-    el("div", { class:"field" }, el("label", {}, "Verification"), statusSeg),
     el("label", { class:"check" }, fFav, " Mark as favorite"),
   );
 
@@ -1859,33 +1695,30 @@ function openSongForm(existing, opts={}){
       lyrics: fLyrics.value, lyricsWithChords: fLWC.value,
       sheetMusic: sheets.filter(x => x.src.trim()),
       tags: fTags.value.split(",").map(t => t.trim()).filter(Boolean),
-      notes: fNotes.value, favorite: fFav.checked, status, verified: status === "verified",
+      notes: fNotes.value, favorite: fFav.checked,
     };
     const saved = isEdit ? Store.updateSong(s.id, data) : Store.addSong(data);
     closeModal(); toast(isEdit ? "Song updated" : "Song added");
-    if (returnTo){ if (parseHash().name + "/" + parseHash().param === returnTo.replace(/^#\//,"")) render(); else go(returnTo); }
-    else { go(`#/song/${saved.id}`); render(); }
+    go(`#/song/${saved.id}`); render();
   } }, isEdit ? "Save changes" : "Add song");
 
   const footL = isEdit
-    ? el("button", { class:"btn danger-btn", style:"margin-right:auto", onclick:() => confirmDelete(s, { returnTo }) }, "Delete song")
+    ? el("button", { class:"btn danger-btn", style:"margin-right:auto", onclick:() => confirmDelete(s) }, "Delete song")
     : el("span", { style:"margin-right:auto" });
 
   modal({ title: isEdit ? "Edit song" : "Add song", wide:true, body,
     footer: [footL, el("button", { class:"btn", onclick:() => closeModal() }, "Cancel"), save] });
 }
 
-function confirmDelete(s, opts={}){
+function confirmDelete(s){
   modal({ title:"Delete song", body: el("div", {},
       el("p", {}, "Delete ", el("b", {}, s.title), " by ", esc(s.artist), "? This can’t be undone."),
       el("p", { style:"margin-top:8px;color:var(--muted);font-size:13px" }, "Tip: keep a backup via Settings → Export Library.")),
     footer: [
-      el("button", { class:"btn", onclick:() => openSongForm(s, opts) }, "Cancel"),
+      el("button", { class:"btn", onclick:() => openSongForm(s) }, "Cancel"),
       el("button", { class:"btn danger-btn", onclick:() => {
-        const inReview = (opts.returnTo || "").startsWith("#/review");
         Store.deleteSong(s.id); closeModal(); toast("Song deleted");
-        if (inReview) Review.drop(s.id);
-        else { go("#/"); render(); }
+        go("#/"); render();
       } }, "Delete"),
     ] });
 }
@@ -1903,20 +1736,6 @@ function renderSettings(root){
 
   const songs = Store.getSongs();
 
-  // -- review queue
-  const vCount = songs.filter(s => s.status === "verified").length;
-  const revSec = el("div", { class:"settings-sec" });
-  revSec.append(el("h3", {}, "Verification"),
-    el("p", {}, `${vCount} of ${songs.length} verified · ${songs.length - vCount} still flagged. Review Mode steps through them one at a time.`));
-  const revRow = el("div", { class:"row" });
-  Object.entries(Review.SCOPES).forEach(([k,v]) => {
-    const n = Review.count(k);
-    if (!n && k !== "all") return;
-    revRow.append(el("button", { class:"btn sm", onclick:() => Review.start(k) }, `${v.label} · ${n}`));
-  });
-  revSec.append(revRow);
-  root.append(revSec);
-
   // -- data
   const dataSec = el("div", { class:"settings-sec" });
   dataSec.append(el("h3", {}, "Library data"),
@@ -1926,7 +1745,7 @@ function renderSettings(root){
   const importInput = el("input", { type:"file", accept:"application/json,.json", style:"display:none",
     onchange:e => { const f = e.target.files[0]; if (f) importLibrary(f); e.target.value = ""; } });
   dataRow.append(el("button", { class:"btn", onclick:() => importInput.click() }, "Import Library (JSON)"), importInput);
-  dataRow.append(el("button", { class:"btn danger-btn", onclick:confirmReset }, "Clear library"));
+  dataRow.append(el("button", { class:"btn danger-btn", onclick:confirmReset }, "Reset my changes"));
   dataSec.append(dataRow);
   root.append(dataSec);
 
@@ -1953,10 +1772,8 @@ function renderSettings(root){
   const kbSec = el("div", { class:"settings-sec" });
   kbSec.append(el("h3", {}, "Keyboard shortcuts"));
   const kb = el("div", { class:"src-note" });
-  [["/","Focus search"],["Esc","Close dialog / leave practice or review"],
-   ["← →","Prev / next — in practice mode and review mode"],
-   ["G / Enter","Review: mark “looks good” and advance"],
-   ["V","Review: toggle verified"],["E","Review: edit the current song"],
+  [["/","Focus search"],["Esc","Close dialog / leave practice"],
+   ["← →","Previous / next song in practice mode"],
    ["F","Favorite the open song"]]
     .forEach(([k,d]) => kb.append(el("div", { style:"margin-bottom:5px" }, el("span", { class:"kbd" }, k), "  " + d)));
   kbSec.append(kb);
@@ -1987,11 +1804,11 @@ function importLibrary(file){
   reader.readAsText(file);
 }
 function confirmReset(){
-  modal({ title:"Clear library", body:
-      el("p", {}, "This deletes every song in this browser and starts from an empty library. Export a backup first if you want to keep anything."),
+  modal({ title:"Reset my changes", body:
+      el("p", {}, "This removes the songs you added in this browser, your edits, favorites and deletions. The library goes back to exactly the songs published with the app. Export a backup first if you want to keep anything."),
     footer: [
       el("button", { class:"btn", onclick:() => closeModal() }, "Cancel"),
-      el("button", { class:"btn danger-btn", onclick:() => { Store.resetLibrary(); closeModal(); toast("Library cleared"); go("#/"); render(); } }, "Clear everything"),
+      el("button", { class:"btn danger-btn", onclick:() => { Store.resetLibrary(); closeModal(); toast("Back to the published library"); go("#/"); render(); } }, "Reset"),
     ] });
 }
 
@@ -2006,7 +1823,6 @@ document.addEventListener("keydown", e => {
     if (_chordPop) return closeChordPop();
     if ($("#modal-root").hasChildNodes()) return closeModal();
     if (route.name === "practice") return history.length > 1 ? history.back() : go(`#/song/${route.param}`);
-    if (route.name === "review") return Review.exit();
   }
   if (typing){
     if (e.key === "Escape") document.activeElement.blur();
@@ -2022,13 +1838,6 @@ document.addEventListener("keydown", e => {
   }
   if (route.name === "song"){
     if (e.key.toLowerCase() === "f"){ Store.toggleFavorite(route.param); render(); }
-  }
-  if (route.name === "review"){
-    if (e.key === "ArrowRight"){ e.preventDefault(); Review.next(); }
-    if (e.key === "ArrowLeft"){ e.preventDefault(); Review.prev(); }
-    if (e.key === "Enter" || e.key.toLowerCase() === "g"){ e.preventDefault(); Review.markGood(); }
-    if (e.key.toLowerCase() === "v"){ Review.toggleVerified(); }
-    if (e.key.toLowerCase() === "e"){ const s = Store.getSong(Review.currentId()); if (s) openSongForm(s, { returnTo:`#/review/${s.id}` }); }
   }
 });
 

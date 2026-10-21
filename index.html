@@ -273,6 +273,38 @@ main{max-width:var(--maxw);margin:0 auto;padding:26px 20px 80px}
 body[data-route="song"] .appbar{position:static}      /* the chord strip takes over the top of the screen while you play */
 .practice .chordstrip{padding:8px 14px;border-bottom:1px solid var(--line);background:var(--card-2)}
 
+/* ============================================================ NAV TABS + CHORDS PAGE */
+.navtabs{max-width:var(--maxw);margin:0 auto;padding:0 20px 10px;display:flex;gap:6px}
+.navtabs a{padding:6px 15px;border-radius:999px;font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none}
+.navtabs a:hover{background:var(--card-2)}
+.navtabs a[aria-current="page"]{background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.cp-sub{color:var(--muted);font-size:14px}
+.cp-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;margin-bottom:6px}
+.cp-find{flex:1;min-width:220px;max-width:340px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:13.5px}
+.cp-find:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.cp-find-out{display:flex;align-items:center;min-height:40px}
+.cp-hint{font-size:12.5px;color:var(--muted)}
+.cp-h{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 10px}
+.cp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.cp-card{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px 6px;border:1px solid var(--line-soft);border-radius:14px;background:var(--card);position:relative}
+.cp-name{font-family:var(--mono);font-size:13px;font-weight:600}
+.cp-dia svg{display:block;width:62px;height:auto}
+.cp-none{height:50px;display:grid;place-items:center;color:var(--faint);font-size:20px}
+.cp-tag{font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.cp-foot{margin-top:18px;font-size:12px;color:var(--faint)}
+.cp-controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:14px}
+.cp-conv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cp-pane{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);padding:12px 14px 14px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.cp-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cp-ta,.cp-out{font-family:var(--mono);font-size:12.5px;line-height:1.55;min-height:260px;border:none;background:var(--card-2);border-radius:10px;padding:10px 12px;width:100%;resize:vertical;white-space:pre;overflow:auto;color:var(--ink)}
+.cp-ta:focus{outline:2px solid var(--accent-soft)}
+.cp-out{margin:0;flex:1}
+.cp-info{font-size:12.5px;color:var(--ink-soft);min-height:18px}
+.cp-actions{display:flex;gap:8px;flex-wrap:wrap}
+.cp-shapes{margin-top:6px}
+@media (max-width:480px){ .cp-grid{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px} .cp-dia svg{width:54px} }
+@media (max-width:760px){ .cp-conv{grid-template-columns:1fr} .navtabs{padding:0 15px 8px} .cp-ta,.cp-out{min-height:180px} }
+
 /* ============================================================ TUNER */
 .tn-panel{max-width:560px;margin:0 auto;border:1px solid var(--line);border-radius:22px;background:var(--card);padding:22px 22px 24px;box-shadow:var(--shadow)}
 .tn-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px}
@@ -431,6 +463,11 @@ body[data-route="song"] .appbar{position:static}      /* the chord strip takes o
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 13a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.2a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.2a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H10a1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V10a1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.2a1.7 1.7 0 0 0-1.4 1z"/></svg>
     </button>
   </div>
+  <nav class="navtabs" aria-label="Sections">
+    <a href="#/" data-nav="library">Library</a>
+    <a href="#/chords" data-nav="chords">Chords</a>
+    <a href="#/tuner" data-nav="tuner">Tuner</a>
+  </nav>
 </div>
 
 <main id="view" tabindex="-1"></main>
@@ -573,6 +610,311 @@ body[data-route="song"] .appbar{position:static}      /* the chord strip takes o
   "favorite": false,
   "createdAt": "2026-10-20T00:00:00.000Z",
   "updatedAt": "2026-10-20T00:00:00.000Z"
+ },
+ {
+  "id": "cheira-a-lisboa",
+  "title": "Cheira a Lisboa",
+  "artist": "Amália Rodrigues",
+  "category": "Portuguese",
+  "subcategory": "",
+  "language": "Portuguese",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "Am",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "Am",
+   "E7",
+   "Dm",
+   "A",
+   "A7",
+   "D"
+  ],
+  "lyrics": "Lisboa já tem Sol mas cheira a Lua\nQuando nasce a madruga sorrateira\n\nE o primeiro eléctrico da rua\nFaz coro c'oa chinela da Ribeira\n\nSe chove cheira a terra prometida\nProcissões tem o cheiro a rosmaninho\nNa tasca da viela mais escondida\nCheira a iscas com elas e a vinho\n\nUm craveiro numa água-furtada\nCheira bem, cheira a Lisboa\n\nUma rosa a florir na tapada\nCheira bem, cheira a Lisboa\n\nA fragata que se ergue na proa\nA varina que teima em passar\nCheiram bem porque são de Lisboa\nLisboa tem cheiro de flores e de mar!\n\nLisboa cheira aos cafés do Rossio\nE o fado cheira sempre a solidão\n\nCheira a castanha assada se está frio\nCheira a fruta madura quando é Verão\n\nOs lábios têm o cheiro de um sorriso\nManjerico tem o cheiro de cantigas\nE os rapazes perdem o juízo\nQuando lhes dá o cheiro a raparigas\n\nUm craveiro numa água-furtada\nCheira bem, cheira a Lisboa\n\nUma rosa a florir na tapada\nCheira bem, cheira a Lisboa\n\nA fragata que se ergue na proa\nA varina que teima em passar\nCheiram bem porque são de Lisboa\nLisboa tem cheiro de flores e de mar\n\nCheira bem, cheira a Lisboa\n\nCheira bem, cheira a Lisboa\n\nA fragata que se ergue na proa\nA varina que teima em passar\nCheiram bem porque são de Lisboa\nLisboa tem cheiro de flores e de mar!",
+  "lyricsWithChords": "[Am]Lisboa já tem Sol mas cheira a Lua\nQuando nasce a madruga [E7]sorrateira\n\nE o primeiro eléctrico da rua\nFaz [Dm]coro c'oa [E7]chinela da [Am]Ribeira\n\nSe [Dm]chove cheira a terra [Am]prometida\n[E7]Procissões tem o cheiro a [Am]rosmaninho\nNa [Dm]tasca da viela mais [Am]escondida\nCheira a [E7]iscas com elas e a [A]vinho\n\n[A]Um craveiro numa água-furtada\nCheira bem, cheira a [E7]Lisboa\n\nUma rosa a florir na tapada\nCheira bem, cheira a [A]Lisboa\n\nA fragata que se ergue na [E7]proa\nA varina que teima em [A]passar\nCheiram [A7]bem porque são de [D]Lisboa\nLisboa tem [A]cheiro de [E7]flores e de [A]mar!\n\n[Am]Lisboa cheira aos cafés do Rossio\nE o fado cheira sempre a [E7]solidão\n\nCheira a castanha assada se está frio\nCheira [Dm]a fruta [E7]madura quando é [Am]Verão\n\nOs [Dm]lábios têm o cheiro de um [Am]sorriso\n[E7]Manjerico tem o cheiro de [Am]cantigas\nE os [Dm]rapazes perdem o [Am]juízo\nQuando lhes [E7]dá o cheiro a [A]raparigas\n\n[A]Um craveiro numa água-furtada\nCheira bem, cheira a [E7]Lisboa\n\nUma rosa a florir na tapada\nCheira bem, cheira a [A]Lisboa\n\nA fragata que se ergue na [E7]proa\nA varina que teima em [A]passar\nCheiram [A7]bem porque são de [D]Lisboa\nLisboa tem [A]cheiro de [E7]flores e de [A]mar\n\nCheira bem, cheira a [E7]Lisboa\n\nCheira bem, cheira a [A]Lisboa\n\nA fragata que se ergue na [E7]proa\nA varina que teima em [A]passar\nCheiram [A7]bem porque são de [D]Lisboa\nLisboa tem [A]cheiro de [E7]flores e de [A]mar!",
+  "sheetMusic": [
+   {
+    "type": "link",
+    "label": "BananaCifras",
+    "src": "https://www.bananacifras.com/cifra/a/amalia-rodrigues/cheira-a-lisboa"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-20T00:00:00.000Z",
+  "updatedAt": "2026-10-20T00:00:00.000Z"
+ },
+ {
+  "id": "deu-onda",
+  "title": "Deu Onda",
+  "artist": "MC G15",
+  "category": "Portuguese",
+  "subcategory": "",
+  "language": "Portuguese",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "G",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "G",
+   "C"
+  ],
+  "lyrics": "Eu preciso te ter\nMeu fechamento é você, mozão\nEu não preciso mais beber\nE nem fumar maconha\nQue a sua presença me deu onda\nO seu sorriso me dá onda\nVocê sentando, mozão, me deu onda\nQue vontade de ter, garota\n\nEu gosto de você, fazer o quê?\nO pai te ama\nQue vontade de ter, garota\n\nEu gosto de você, fazer o quê?\nO pai te ama, é,\n\no pai te ama,\nO pai te ama, é,\n\no pai te ama\n\n    (2x)",
+  "lyricsWithChords": "[Intro]\n[G] [C]\n\n[G]Eu preciso te ter\n[C]Meu fechamento é você, mozão\n[G]Eu não preciso mais beber\nE nem fumar [C]maconha\nQue a sua presença me deu [G]onda\nO seu sorriso me dá [C]onda\nVocê sentando, mozão, [G]me deu onda\n[G]Que vontade de ter, [C]garota\n\nEu gosto de você, fazer o quê?\nO pai te [G]ama\n[G]Que vontade de ter, [C]garota\n\nEu gosto de você, fazer o quê?\nO pai te [G]ama, é,\n\no pai te ama,\nO pai te [C]ama, é,\n\no pai te ama\n\n[G] [C] [G] [C] (2x)",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/Deu Onda Tab de uke por MC G15 - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-20T00:00:00.000Z",
+  "updatedAt": "2026-10-20T00:00:00.000Z"
+ },
+ {
+  "id": "demons",
+  "title": "Demons",
+  "artist": "Imagine Dragons",
+  "category": "Pop",
+  "subcategory": "",
+  "language": "English",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 3,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "G",
+   "Am",
+   "F"
+  ],
+  "lyrics": "When the days are cold\nAnd the cards all fold\nAnd the saints we see\nAre all made of gold\n\nWhen your dreams all fail\nAnd the ones we hail\nAre the worst of all\nAnd the blood's run stale\n\nI want to hide the truth\nI want to shelter you\nBut with the beast inside\nThere's nowhere we can hide\nNo matter what we breed\nWe still are made of greed\nThis is my kingdom come\nThis is my kingdom come\n\nWhen you feel my heat\nLook into my eyes\nIt's where my demons hide\nIt's where my demons hide\nDon't get too close\nIt's dark inside\nIt's where my demons hide\nIt's where my demons hide\n\nWhen the curtain's call\nIs the last of all\nWhen the lights fade out\nAll the sinners crawl\n\nSo they dug your grave\nAnd the masquerade\nWill come calling out\nAt the mess you made\n\nDon't want to let you down\nBut I am hell bound\nThough this is all for you\nDon't want to hide the truth\n\nNo matter what we breed\nWe still are made of greed\nThis is my kingdom come\nThis is my kingdom come\n\nWhen you feel my heat\nLook into my eyes\nIt's where my demons hide\nIt's where my demons hide\nDon't get too close\nIt's dark inside\nIt's where my demons hide\nIt's where my demons hide\n\nThey say its what you make\nI say its up to fate\nIt's woven in my soul\nI need to let you go\nyour eyes they shine so bright\ni want to save that light\ni cant escape this now\nunless you show me how\n\nWhen you feel my heat\nLook into my eyes\nIt's where my demons hide\nIt's where my demons hide\nDon't get too close\nIt's dark inside\nIt's where my demons hide\nIt's where my demons hide",
+  "lyricsWithChords": "[Verse]\nWhen the [C]days are cold\nAnd the [G]cards all fold\nAnd the [Am]saints we see\nAre all [F]made of gold\n\nWhen your [C]dreams all fail\nAnd the [G]ones we hail\nAre the [Am]worst of all\nAnd the [F]blood's run stale\n\n[C]I want to hide the [G]truth\nI want to shelter [Am]you\nBut with the beast [F]inside\nThere's nowhere we can [C]hide\nNo matter what we [G]breed\nWe still are made of [Am]greed\nThis is my kingdom [F]come\nThis is my kingdom [C]come\n\n[Chorus]\n[C]When you feel my [G]heat\nLook into my [Am]eyes\nIt's where my demons [F]hide\nIt's where my demons [C]hide\nDon't get too [G]close\nIt's dark [Am]inside\nIt's where my demons [F]hide\nIt's where my demons [C]hide\n\n[Verse]\nWhen the [C]curtain's call\nIs the last [G]of all\nWhen the [Am]lights fade out\nAll the [F]sinners crawl\n\nSo they [C]dug your grave\nAnd the [G]masquerade\nWill come [Am]calling out\nAt the [F]mess you made\n\n[C]Don't want to let you [G]down\nBut I am hell [Am]bound\nThough this is all for [F]you\nDon't want to hide the [C]truth\n\nNo matter what we [G]breed\nWe still are made of [Am]greed\nThis is my kingdom [F]come\nThis is my kingdom [C]come\n\n[Chorus]\n[C]When you feel my [G]heat\nLook into my [Am]eyes\nIt's where my demons [F]hide\nIt's where my demons [C]hide\nDon't get too [G]close\nIt's dark [Am]inside\nIt's where my demons [F]hide\nIt's where my demons [C]hide\n\n[Bridge]\n[C]They say its what you [G]make\nI say its up to [Am]fate\nIt's woven in my [F]soul\nI need to let you [C]go\nyour eyes they shine so [G]bright\ni want to save that [Am]light\ni cant escape this [F]now\nunless you show me [C]how\n\n[Chorus]\n[C]When you feel my [G]heat\nLook into my [Am]eyes\nIt's where my demons [F]hide\nIt's where my demons [C]hide\nDon't get too [G]close\nIt's dark [Am]inside\nIt's where my demons [F]hide\nIt's where my demons [C]hide",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/Demons... Tab de uke por Imagine Dragons - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-20T00:00:00.000Z",
+  "updatedAt": "2026-10-20T00:00:00.000Z"
+ },
+ {
+  "id": "ninguem-te-ama-como-eu",
+  "title": "Ninguém Te Ama Como Eu",
+  "artist": "Católicas",
+  "category": "Católicas",
+  "subcategory": "",
+  "language": "Portuguese",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "Em",
+   "Am",
+   "F",
+   "Dm",
+   "G"
+  ],
+  "lyrics": "Tenho esperado este momento\nTenho esperado que viesses a mim\nTenho esperado que me fales\nTenho esperado que estivesses assim\n\nEu sei bem que tens vivido\nSei também que tens chorado\nEu sei bem que tens sofrido\nPois permaneço ao teu lado\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nEsta é a minha grande prova\nNinguém te ama como eu\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nFoi por ti porque te amo\nNinguém te ama como eu\n\nEu sei bem o que me dizes\nAinda que nunca me fales\nEu sei bem o que tens sentido\nAinda que nunca me reveles\n\nTenho andado ao teu lado\nJunto a ti permanecido\nEu te levo em meus braços\nPois sou teu melhor amigo.\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nEsta é a minha grande prova\nNinguém te ama como eu\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nFoi por ti porque te amo\nNinguém te ama como eu\n\nTenho esperado este momento\nTenho esperado que viesses a mim\nTenho esperado que me fales\nTenho esperado que estivesses assim\n\nEu sei bem que tens vivido\nSei também que tens chorado\nEu sei bem que tens sofrido\nPois permaneço ao teu lado\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nEsta é a minha grande prova\nNinguém te ama como eu\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nFoi por ti porque te amo\nNinguém te ama como eu\n\nEu sei bem o que me dizes\nAinda que nunca me fales\nEu sei bem o que tens sentido\nAinda que nunca me reveles\n\nTenho andado ao teu lado\nJunto a ti permanecido\nEu te levo em meus braços\nPois sou teu melhor amigo.\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nEsta é a minha grande prova\nNinguém te ama como eu\n\nNinguém te ama como eu\nNinguém te ama como eu\nOlhe pra cruz\nFoi por ti porque te amo\nNinguém te ama como eu",
+  "lyricsWithChords": "[Versão 1]\n[C]Tenho esperado [Em]este momento[Am]\n[F]Tenho espera[Dm]do que vies[G]ses a mim\n[C]Tenho espera[Em]do que me fa[Am]les\n[F]Tenho esperado [Dm]que estives[G]ses assim\n\n[C]Eu sei bem [Em]que tens vivi[Am]do\n[F]Sei também [Dm]que tens chora[G]do\n[C]Eu sei bem [Em]que tens sofri[Am]do\n[F]Pois permane[Dm]ço ao teu la[G]do\n\n[Refrão]\nNinguém te [C]ama [Em]como eu[Am]\nNinguém te [F]ama [Dm]como eu[G]\nOlhe pra [C]cruz\nEsta é a [Em]minha grande pro[Am]va\nNinguém te [F]ama [Dm]como eu[G]\n\nNinguém te [C]ama [Em]como eu[Am]\nNinguém te [F]ama [Dm]como eu[G]\nOlhe pra [C]cruz\nFoi por ti [Em]porque te [Am]amo\nNinguém te [F]ama como [Dm]eu[G]\n\n[C]Eu sei bem [Em]o que me di[Am]zes\n[F]Ainda que [Dm]nunca me fa[G]les\n[C]Eu sei bem [Em]o que tens senti[Am]do\n[F]Ainda que [Dm]nunca me reve[G]les\n\n[C]Tenho andado [Em]ao teu la[Am]do\n[F]Junto a ti [Dm]permaneci[G]do\n[C]Eu te levo [Em]em meus bra[Am]ços\n[F]Pois sou [Dm]teu melhor ami[G]go.\n\n[Refrão]\nNinguém te [C]ama [Em]como eu[Am]\nNinguém te [F]ama [Dm]como eu[G]\nOlhe pra [C]cruz\nEsta é a [Em]minha grande pro[Am]va\nNinguém te [F]ama [Dm]como eu[G]\n\nNinguém te [C]ama [Em]como eu[Am]\nNinguém te [F]ama [Dm]como eu[G]\nOlhe pra [C]cruz\nFoi por ti [Em]porque te [Am]amo\nNinguém te [F]ama [Dm]como eu[C]\n\n[Versão 2]\n[Am]Tenho esperado este mo[F]mento\n[C]Tenho esperado que [G]viesses a mim\n[Am]Tenho esperado que me [F]fales\n[C]Tenho esperado que esti[G]vesses assim\n\n[Am]Eu sei bem que tens vi[F]vido\n[C]Sei também que tens cho[G]rado\n[Am]Eu sei bem que tens sof[F]rido\n[C]Pois permaneço ao teu [G]lado\n\n[Refrão]\nNinguém te [C]ama como [Am]eu\nNinguém te [F]ama como [G]eu\nOlhe pra [C]cruz\nEsta é a minha grande [Am]prova\nNinguém te [F]ama como [G]eu\n\nNinguém te [C]ama como [Am]eu\nNinguém te [F]ama como [G]eu\nOlhe pra [C]cruz\nFoi por ti porque te [Am]amo\nNinguém te [F]ama como [G]eu\n\n[Am]Eu sei bem o que me [F]dizes\n[C]Ainda que nunca me [G]fales\n[Am]Eu sei bem o que tens sen[F]tido\n[C]Ainda que nunca me re[G]veles\n\n[Am]Tenho andado ao teu [F]lado\n[C]Junto a ti permane[G]cido\n[Am]Eu te levo em meus [F]braços\n[C]Pois sou teu melhor [G]amigo.\n\n[Refrão]\nNinguém te [C]ama como [Am]eu\nNinguém te [F]ama como [G]eu\nOlhe pra [C]cruz\nEsta é a minha grande [Am]prova\nNinguém te [F]ama como [G]eu\n\nNinguém te [C]ama como [Am]eu\nNinguém te [F]ama como [G]eu\nOlhe pra [C]cruz\nFoi por ti porque te [Am]amo\nNinguém te [F]ama como [G]eu",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/Católicas - Ninguém Te Ama Como Eu [Uke Cifras].pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "The source has two arrangements: Versão 1 (C Em Am F Dm G) and a simpler Versão 2 (Am F C G).",
+  "favorite": false,
+  "createdAt": "2026-10-20T00:00:00.000Z",
+  "updatedAt": "2026-10-20T00:00:00.000Z"
+ },
+ {
+  "id": "do-you-want-to-build-a-snowman",
+  "title": "Do You Want to Build a Snowman?",
+  "artist": "Disney",
+  "category": "Film & TV",
+  "subcategory": "Frozen",
+  "language": "English",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "G",
+   "Am",
+   "F",
+   "E"
+  ],
+  "lyrics": "Do you want to build a snowman?\nCome on let's go and play\nI never see you anymore\nCome out the door,\nIt's like you've gone away\nWe used to be best buddies\nAnd now we're not\nI wish you would tell me why\nDo you want to build a snowman?\nIt doesn't have to be a Snowman\n\nYoung Elsa: Go away, Anna\nToddler Anna: Okay, bye\n\nDo you wanna build a snowman?\nOr ride our bike around the halls\nI think some company is overdue\nI've started talking to the pictures on the walls\nIt gets a little lonely\nAll these empty rooms\nJust watching the hours tick by\n\nPlease, I know you're in there\nPeople are asking where you've been\nThey say have courage, and I'm trying to\nI'm right out here for you, just let me in\nWe only have each other\nIt's just you and me\nWhat are we gonna do?\nDo you wanna build a snowman?",
+  "lyricsWithChords": "[C]Do you want to build a snowman?\nCome on let's go and [G]play\nI never see you [Am]anymore\nCome [F]out the door,\nIt's like you've gone [G]away\nWe used to be best [Am]buddies\nAnd [C]now we're not\nI [Am]wish you would [E]tell me [F]why\nDo you want to build a [C]snowman?\nIt doesn't have to be a [F]Snowman\n\nYoung Elsa: Go away, Anna\nToddler Anna: Okay, [C]bye\n\nDo you wanna build a [C]snowman?\nOr ride our bike around the [G]halls\nI think some company is [Am]overdue\nI've started [F]talking to the pictures on the [G]walls\nIt [Am]gets a little lonely\nAll these empty [C]rooms\nJust [Am]watching the [E]hours tick [F]by\n\nPlease, I know you're in [C]there\nPeople are asking where you've [G]been\nThey say have courage, and I'm trying [Am]to\nI'm right out here for [F]you, just let me [G]in\nWe only have [Am]each other\nIt's just [C]you and me\n[Am]What are we [E]gonna [F]do?\nDo you wanna build a [C]snowman?",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/Do You Want To Build A Snowman_ (Frozen) Uke tab by Disney - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-21T00:00:00.000Z",
+  "updatedAt": "2026-10-21T00:00:00.000Z"
+ },
+ {
+  "id": "flowers",
+  "title": "Flowers",
+  "artist": "Miley Cyrus",
+  "category": "Pop",
+  "subcategory": "",
+  "language": "English",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "Cmaj7",
+   "Am",
+   "Dm",
+   "G",
+   "C",
+   "E7",
+   "C/B",
+   "F"
+  ],
+  "lyrics": "We were good, we were gold\nKind of dream that can't be sold\nWe were right 'til we weren't\nBuilt a home and watched it burn\n\nMmm, I didn't wanna leave you, I didn't wanna lie\nStarted to cry but then remembered, I\n\nI can buy myself flowers\nWrite my name in the sand\nTalk to myself for hours\nSee things you don't understand\nI can take myself dancing\nAnd I can hold my own hand\nYeah, I can love me better than you can\n\nCan love me better, I can love me better, baby\nCan love me better, I can love me better, baby\n\nPaint my nails, cherry red\nMatch the roses that you left\nNo remorse, no regret\nI forget every word you said\n\nOoh, I didn't wanna leave you, baby, I didn't wanna fight\nStarted to cry but then remembered I\n\nI can buy myself flowers\nWrite my name in the sand\nTalk to myself for hours\nSee things you don't understand\nI can take myself dancing, yeah\nAnd I can hold my own hand\nYeah, I can love me better than you can\n\nCan love me better, I can love me better, baby\nCan love me better, I can love me better, baby\nCan love me better, I can love me better, baby\nCan love me better, I\n\nI didn't wanna leave you, baby, I didn't wanna fight\nStarted to cry but then remembered I\n\nI can buy myself flowers (Uh-uh)\nWrite my name in the sand\nTalk to myself for hours (Yeah-eah)\nSee things you don't understand\nI can take myself dancing (Yeah-eah)\nAnd I can hold my own hand\nYeah, I can love me better than\nYeah, I can love me better than you can\n\nCan love me better, I can love me better, baby\nCan love me better, I can love me better, baby (Baby yeah)\nCan love me better, I can love me better, baby\nCan love me better, I",
+  "lyricsWithChords": "[Intro]\n[Cmaj7]\n\n[Verse 1]\nWe were [Am]good, we were [Dm]gold\nKind of [G]dream that can't be [C]sold\nWe were [Am]right 'til we [Dm]weren't\nBuilt a [G]home and watched it [C]burn\n\n[Pre-Chorus]\nMmm, [Am]I didn't wanna leave you, [Dm]I didn't wanna lie\n[E7]Started to cry but then remembered, I\n\n[Chorus]\n[Am]I can buy myself [Dm]flowers\n[G]Write my name in the [C]sand[C/B]\n[Am]Talk to myself for [Dm]hours\n[G]See things you don't under[C]stand[C/B]\n[Am]I can take myself [Dm]dancing\n[G]And I can hold my own [C]hand[C/B]\nYeah, I can [F]love me better [E7]than you [Am]can\n\n[Post-Chorus]\nCan love me better, [Dm]I can love me better, baby\n[G]Can love me better, [C]I can love me [C/B]better, baby\n\n[Verse 2]\nPaint my [Am]nails, cherry [Dm]red\nMatch the [G]roses that you [C]left[Cmaj7]\nNo [Am]remorse, no [Dm]regret\nI for[G]get every word you [C]said[Cmaj7]\n\n[Pre-Chorus]\nOoh, [Am]I didn't wanna leave you, baby, [Dm]I didn't wanna fight\n[E7]Started to cry but then remembered I\n\n[Chorus]\n[Am]I can buy myself [Dm]flowers\n[G]Write my name in the [C]sand[C/B]\n[Am]Talk to myself for [Dm]hours\n[G]See things you don't under[C]stand[C/B]\n[Am]I can take myself [Dm]dancing, yeah\n[G]And I can hold my own [C]hand[C/B]\nYeah, I can [F]love me better [E7]than you [Am]can\n\n[Post-Chorus]\nCan love me better, [Dm]I can love me better, baby\n[G]Can love me better, [C]I can love me [C/B]better, baby\n[Am]Can love me better, [Dm]I can love me better, baby\n[G]Can love me better, [C]I\n\n[Pre-Chorus]\n[Am]I didn't wanna leave you, baby, [Dm]I didn't wanna fight\n[E7]Started to cry but then remembered I\n\n[Chorus]\n[Am]I can buy myself [Dm]flowers (Uh-uh)\n[G]Write my name in the [C]sand[C/B]\n[Am]Talk to myself for [Dm]hours (Yeah-eah)\n[G]See things you don't under[C]stand[C/B]\n[Am]I can take myself [Dm]dancing (Yeah-eah)\n[G]And I can hold my own [C]hand[C/B]\nYeah, I can [F]love me better [E7]than\nYeah, I can [F]love me better [E7]than you [Am]can\n\n[Outro]\nCan love me better, [Dm]I can love me better, baby\n[G]Can love me better, [C]I can love me [C/B]better, baby (Baby yeah)\n[Am]Can love me better, [Dm]I can love me better, baby\n[G]Can love me better, [C]I[C/B][Am]",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/Flowers Uke tab by Miley Cyrus - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "",
+  "favorite": false,
+  "createdAt": "2026-10-21T00:00:00.000Z",
+  "updatedAt": "2026-10-21T00:00:00.000Z"
+ },
+ {
+  "id": "la-bicicleta",
+  "title": "La Bicicleta",
+  "artist": "Carlos Vives",
+  "category": "Spanish",
+  "subcategory": "",
+  "language": "Spanish",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "G",
+   "Am",
+   "F"
+  ],
+  "lyrics": "Nada voy a hacer\nRebuscando en las heridas del pasado\nNo voy a perder\nYo no quiero ser un tipo de otro lado\n\nA tu manera, descomplicado\nEn una bici que te lleve a todos lados\nUn vallenato desesperado\nUna cartica que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\nLa que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\n\n     \n\nPuedo ser feliz\nCaminando relajada entre la gente\nYo te quiero así\nY me gustas porque eres diferente\n\nA mi manera, despelucado\nEn una bici que me lleva a todos lados\nUn vallenato desesperado\nUna cartica que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\nLa que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\n\nElla es la favorita, la que canta en la zona\nSe mueven sus caderas como un barco en las olas\nTiene los pies descalzos como un niño que adora\nY su cabello es largo, sobre un sol que te antoja\nLe gusta que le digan que es la niña \"la lola\"\nLe gusta que la miren cuando ella baila sola\nLe gusta más la casa, que no pasen las horas\nLe gusta Barranquilla, le gusta Barcelona\n\nLleva, llévame en tu bicicleta\nÓyeme, Carlos, llévame en tu bicicleta\nQuiero que recorramos juntos esa zona\nDesde Santa Marta hasta La Arenosa\n\nLleva, llévame en tu bicicleta\nPa' que juguemos bola 'e trapo allá en Chancleta\nQue sí a Pique algún día le muestras el Tayrona\nDespués no querrá irse pa' Barcelona\n\nA mi manera, descomplicado\nEn una bici que te lleve a todos lados\nUn vallenato desesperado\nUna cartica que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\nLa que yo guardo donde te escribí\nQue te sueño y que te quiero tanto\nQue hace rato está mi corazón\nLatiendo por ti, latiendo por ti\n\nLleva, llévame en tu bicicleta\nÓyeme, Carlos, llévame en tu bicicleta\nQue sí a Pique algún día le muestras el Tayrona\nDespués no querrá irse pa' Barcelona\n\nLleva, llévame en tu bicicleta\nÓyeme, Carlos, llévame en tu bicicleta\nQue sí a mi Pique tu le muestras el Tayrona\nDespués no querrá irse pa' Barcelona",
+  "lyricsWithChords": "[C]Nada [G]voy a [Am]hacer\n[F]Rebuscando en las [C]heridas del pa[G]sado\n[C]No [G]voy a per[Am]der\nYo no [F]quiero ser un [C]tipo de otro [G]lado\n\n[F]A tu manera, [C]descomplicado\n[G]En una bici que te [Am]lleve a todos lados\n[F]Un vallenato [C]desesperado\nUna [G]cartica que [Am]yo guardo donde te escri[F]bí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace rato está mi cora[F]zón\nLatiendo por [G]ti, latiendo por [Am]ti\nLa que yo guardo donde te es[F]cribí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace rato está mi cora[F]zón\nLatiendo por [G]ti, latiendo por [Am]ti\n\n[F] [G] [Am] [F] [G] [Am]\n\n[C]Puedo [G]ser fe[Am]liz\nCami[F]nando rela[C]jada entre la [G]gente\n[C]Yo [G]te quiero [Am]así\nY me [F]gustas porque [C]eres diferen[G]te\n\nA mi [F]manera, de[C]spelucado\n[G]En una bici que me lleva a todos [Am]lados\nUn [F]vallenato dese[C]sperado\nUna car[G]tica que yo [Am]guardo donde te escri[F]bí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace rato está mi cora[F]zón\nLatiendo por [G]ti, latiendo por [Am]ti\nLa que yo guardo donde te escri[F]bí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace rato está mi cora[F]zón\nLatiendo por [G]ti, latiendo por [Am]ti\n\nElla es la favorita, la que canta en la [F]zona\nSe mueven sus caderas como un barco en las [C]olas\nTiene los pies descalzos como un niño que [G]adora\nY su cabello es largo, sobre un sol que te [Am]antoja\nLe gusta que le digan que es la niña \"la [F]lola\"\nLe gusta que la miren cuando ella baila [C]sola\nLe gusta más la casa, que no pasen las [G]horas\nLe gusta Barranquilla, le gusta Barcelo[Am]na\n\nLleva, llévame en tu bici[F]cleta\nÓyeme, [G]Carlos, llévame en tu bicicle[Am]ta\nQuiero que recorramos juntos esa [F]zona\nDesde Santa [G]Marta hasta La Areno[Am]sa\n\nLleva, llévame en tu bici[F]cleta\nPa' que ju[G]guemos bola 'e trapo allá en Chancle[Am]ta\nQue sí a Pique algún día le muestras el Tay[F]rona\nDespués no que[G]rrá irse pa' Barcelo[Am]na\n\n[F]A mi manera, [C]descomplicado\n[G]En una bici que te [Am]lleve a todos lados\n[F]Un vallenato [C]desesperado\nUna [G]cartica que [Am]yo guardo donde te escri[F]bí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace rato está mi cora[F]zón\nLa[G]tiendo por ti, latiendo por [Am]ti\nLa que yo guardo donde te es[F]cribí\nQue te [G]sueño y que te quiero [Am]tanto\nQue hace [Am]rato está mi cora[F]zón\nLa[G]tiendo por ti, latiendo por [Am]ti\n\nLleva, llévame en tu bici[F]cleta\nÓyeme, [G]Carlos, llévame en tu bicicle[Am]ta\nQue sí a Pique algún día le muestras el Tay[F]rona\nDespués no que[G]rrá irse pa' Barcelo[Am]na\n\nLleva, llévame en tu bici[F]cleta\nÓyeme, [G]Carlos, llévame en tu bicicle[Am]ta\nQue sí a mi Pique tu le muestras el Tayrona[F]\nDespués no que[G]rrá irse pa' Barcelo[Am]na",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Original tab",
+    "src": "songs-done/La Bicicleta (full) Tab de uke por Carlos Vives (Acordes Barítonos) - Ukulele Tabs.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "The original tab was written for baritone ukulele (DGBE). The chord names are the same on a standard gCEA ukulele — the diagrams here are gCEA shapes.",
+  "favorite": false,
+  "createdAt": "2026-10-21T00:00:00.000Z",
+  "updatedAt": "2026-10-21T00:00:00.000Z"
+ },
+ {
+  "id": "ninguem-te-ama-como-eu-cancioneiro",
+  "title": "Ninguém Te Ama Como Eu",
+  "artist": "Martín Valverde",
+  "category": "Católicas",
+  "subcategory": "",
+  "language": "Portuguese",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "C",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "C",
+   "Am",
+   "F",
+   "G",
+   "G7"
+  ],
+  "lyrics": "Quanto esperei este momento,\nQuanto esperei que estivesses aqui.\nQuanto esperei que me falasses,\nQuanto esperei que viesses a mim.\n\nSei bem o que tens vivido.\nSei bem porque tens chorado.\nSei bem o que tens sofrido.\nSempre estive a teu lado.\n\nNinguém te ama como Eu.\nNinguém te ama como Eu.\nOlha pra Cruz!\nÉ a minha maior prova.\nNinguém te ama como Eu.\n\nNinguém te ama como Eu.\nNinguém te ama como Eu.\nFoi por ti, só por ti, porque te amo.\nNinguém te ama como Eu.\n\nEu sei bem o que tu dizes\nMesmo que às vezes não me fales\nEu sei bem o que tu sentes\nMesmo que não o partilhes comigo\n\nA teu lado caminharei,\nJunto a ti eu sempre estive;\nTenho sido o teu apoio,\nSou o teu melhor amigo.",
+  "lyricsWithChords": "[Verse 1]\n[C]Quanto esperei este mo[Am]mento,\n[F]Quanto esperei que estivesses [G]aqui.\n[C]Quanto esperei que me fala[Am]sses,\n[F]Quanto esperei que vie[G]sses a mim.\n\n[Verse 2]\n[C]Sei bem o que tens vi[Am]vido.\n[F]Sei bem porque tens chora[G]do.\n[C]Sei bem o que tens so[Am]frido.\n[F]Sempre estive a teu [G]la[G7]do.\n\n[Chorus]\nNinguém te [C]ama como [Am]Eu.\nNinguém te [F]ama como [G]Eu.\nOlha pra [C]Cruz!\nÉ a minha maior [Am]prova.\n[F]Ninguém te ama como Eu.[G]\n\nNinguém te [C]ama como [Am]Eu.\nNinguém te [F]ama como [G]Eu.\nFoi por ti, [C]só por ti, porque te [Am]amo.\n[F]Ninguém te ama [G]como [C]Eu.\n\n[Verse 3]\nEu sei bem o que tu dizes\nMesmo que às vezes não me fales\nEu sei bem o que tu sentes\nMesmo que não o partilhes comigo\n\n[Verse 4]\nA teu lado caminharei,\nJunto a ti eu sempre estive;\nTenho sido o teu apoio,\nSou o teu melhor amigo.",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Cancioneiro (song 93)",
+    "src": "other-files/#Cancioneiro.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "From the EJNS Cancioneiro (song 93), written for guitar. Chord names converted (Do → C, La- → Am, Fa → F, Sol → G) and the bass notes of Do/Si dropped for ukulele. Verses 3 and 4 have no chords in the book.",
+  "favorite": false,
+  "createdAt": "2026-10-21T00:00:00.000Z",
+  "updatedAt": "2026-10-21T00:00:00.000Z"
+ },
+ {
+  "id": "agua",
+  "title": "Água",
+  "artist": "Pe. Nuno Tovar de Lemos",
+  "category": "Católicas",
+  "subcategory": "",
+  "language": "Portuguese",
+  "difficulty": "",
+  "instrument": "Ukulele",
+  "key": "G",
+  "capo": 0,
+  "tuning": "gCEA",
+  "chords": [
+   "G",
+   "Em",
+   "Am",
+   "D"
+  ],
+  "lyrics": "Senhor, sois o meu Deus,\ndesde a aurora Vos busco.\nEm minh' alma suspiro por Vós.\nMinh' alma tem sede de Vós,\ncomo terra sem água.\n\nEu quero contemplar\nVosso amor, Vossa glória,\nvisitar Vosso templo e cantar.\nMinh' alma tem sede de Vós\ncomo terra sem...\n\nÁgua.\nVossa graça vale mais do que a vida\nÁgua.\nA vida inteira não chega\nPara Vos bendizer,\nA vida inteira não chega...\nP'ra amar.\n\nAssim Vos bendirei\npor tod' a minha vida\ne em louvor abrirei minhas mãos.\nMinh' alma tem sede de Vós\ncomo terra sem água.\n\nSenhor, quando ao deitar\npor um momento vos sinto,\npasso a noite a pensar em Vós.\nMinh'alma tem sede de Vós\ncomo a terra sem...\n\nMeu Deus, repouso em Vós\nà sombra das Vossas asas\ne exulto confiante, por fim.\nMinh' alma tem sede de Vós\ncomo terra sem água.\n\nUnido a Vós estou,\nà vossa mão que me ampara,\nem minha alma Vos busco, Senhor.\nMinh'alma tem sede de Vós\ncomo terra sem…",
+  "lyricsWithChords": "[Verse 1]\nSe[G]nhor, sois o meu [Em]Deus,\n[Am]desde a aurora Vos [D]busco.\nEm minh' [G]alma suspiro por [Em]Vós.\nMinh' [Am]alma tem sede de [D]Vós,\ncomo terra sem [G]água.[D]\n\n[Verse 2]\nEu [G]quero contem[Em]plar\n[Am]Vosso amor, Vossa [D]glória,\nvi[G]sitar Vosso templo e [Em]cantar.\nMinh' [Am]alma tem sede de [D]Vós\ncomo terra sem...[G]\n\n[Chorus]\n[Em]Água.\n[Am]Vossa graça vale [D]mais do que a vida\n[G]Á[Em]gua.\n[Am]A vida inteira não [D]chega\nPara Vos bendi[G]zer,\nA vida [G]inteira não [Em]chega...\n[D]P'ra amar.\n\n[Verse 3]\nAssim Vos bendirei\npor tod' a minha vida\ne em louvor abrirei minhas mãos.\nMinh' alma tem sede de Vós\ncomo terra sem água.\n\n[Verse 4]\nSenhor, quando ao deitar\npor um momento vos sinto,\npasso a noite a pensar em Vós.\nMinh'alma tem sede de Vós\ncomo a terra sem...\n\n[Verse 5]\nMeu Deus, repouso em Vós\nà sombra das Vossas asas\ne exulto confiante, por fim.\nMinh' alma tem sede de Vós\ncomo terra sem água.\n\n[Verse 6]\nUnido a Vós estou,\nà vossa mão que me ampara,\nem minha alma Vos busco, Senhor.\nMinh'alma tem sede de Vós\ncomo terra sem…",
+  "sheetMusic": [
+   {
+    "type": "pdf",
+    "label": "Cancioneiro (song 5)",
+    "src": "other-files/#Cancioneiro.pdf"
+   }
+  ],
+  "tags": [],
+  "notes": "From the EJNS Cancioneiro (song 5), written for guitar. Chord names converted (Sol → G, Mi- → Em, La- → Am, Re → D) and the bass note of Sol/Fa# dropped for ukulele. Verses 3–6 have no chords in the book (same chords as verses 1–2).",
+  "favorite": false,
+  "createdAt": "2026-10-21T00:00:00.000Z",
+  "updatedAt": "2026-10-21T00:00:00.000Z"
  }
 ]</script>
 <script>
@@ -639,7 +981,7 @@ const Store = (() => {
   // v2 keys: the library was reset to empty, so songs cached under the old v1 keys are ignored.
   const K = { songs:"music.songs.v2", cats:"music.categories.v2", prefs:"music.prefs.v1", recent:"music.recent.v2",
               patches:"music.patches.v2", deleted:"music.deleted.v2" };
-  const DEFAULT_PREFS = { view:"grid", sort:"title", chordMode:"contains", showChords:true, fontStep:0, autoscrollSpeed:3, tuning:"standard", a4:440 };
+  const DEFAULT_PREFS = { view:"grid", sort:"title", chordMode:"contains", showChords:true, fontStep:0, autoscrollSpeed:3, tuning:"standard", a4:440, chordNames:"letters" };
 
   const read = (k, fb) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; } catch(e){ return fb; } };
   const write = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ toast("Storage full — export a backup"); return false; } };
@@ -852,12 +1194,15 @@ function render(){
   closeChordPop();
   const { name, param } = parseHash();
   document.body.dataset.route = name;
+  const navKey = name === "chords" ? "chords" : name === "tuner" ? "tuner" : "library";
+  $$(".navtabs a").forEach(a => a.dataset.nav === navKey ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current"));
   const root = $("#view");
   if (name !== "tuner") Tuner.leave();
   if (name !== "practice") _practiceFrom = null;
   if (name === "song")      return renderSong(root, param);
   if (name === "practice")  return renderPractice(param);
   if (name === "tuner")     return renderTuner(root);
+  if (name === "chords")    return renderChords(root);
   if (name === "settings")  return renderSettings(root);
   return renderLibrary(root);
 }
@@ -1576,44 +1921,39 @@ function renderTuner(root){
 const SHAPES = {
   "C":[0,0,0,3],"C7":[0,0,0,1],"Cmaj7":[0,0,0,2],"C6":[0,0,0,0],"Cadd9":[0,2,0,3],"Cm":[0,3,3,3],"Cm7":[3,3,3,3],
   "D":[2,2,2,0],"D7":[2,2,2,3],"Dm":[2,2,1,0],"Dm7":[2,2,1,3],"Dmaj7":[2,2,2,4],"Dsus4":[0,2,3,0],"Dsus2":[2,2,0,0],
-  "E":[4,4,4,0],"E7":[1,2,0,2],"Em":[0,4,3,2],"Em7":[0,2,0,2],"Emaj7":[1,3,0,2],
+  "E":[4,4,4,2],"E7":[1,2,0,2],"Em":[0,4,3,2],"Em7":[0,2,0,2],"Emaj7":[1,3,0,2],
   "F":[2,0,1,0],"F7":[2,3,1,0],"Fm":[1,0,1,3],"Fmaj7":[2,4,1,3],"Fm7":[1,3,1,3],
   "G":[0,2,3,2],"G7":[0,2,1,2],"Gm":[0,2,3,1],"Gmaj7":[0,2,2,2],"Gsus4":[0,2,3,3],"Gm7":[0,2,1,1],
   "A":[2,1,0,0],"A7":[0,1,0,0],"Am":[2,0,0,0],"Am7":[0,0,0,0],"Amaj7":[1,1,0,0],"Asus4":[2,2,0,0],
-  "B":[4,3,2,2],"B7":[2,3,2,2],"Bm":[4,2,2,2],"Bm7":[2,2,2,2],"Bdim":[1,2,1,2],
+  "B":[4,3,2,2],"Bmaj7":[3,3,2,2],"B7":[2,3,2,2],"Bm":[4,2,2,2],"Bm7":[2,2,2,2],"Bdim":[1,2,1,2],
   "Bb":[3,2,1,1],"Bb7":[1,2,1,1],"Bbm":[3,1,1,1],"A#":[3,2,1,1],
-  "Eb":[3,3,3,1],"Ebmaj7":[3,3,3,0],"D#":[3,3,3,1],
+  "Eb":[3,3,3,1],"Ebmaj7":[3,3,3,5],"D#":[3,3,3,1],
   "Ab":[5,3,4,3],"G#":[5,3,4,3],"Abmaj7":[1,3,3,3],
   "Db":[1,1,1,4],"C#":[1,1,1,4],"C#m":[1,4,4,4],
   "F#":[3,1,2,1],"Gb":[3,1,2,1],"F#m":[2,1,2,0],"Gbm":[2,1,2,0],"F#m7":[2,4,2,4],
   "G#m":[4,3,4,2],"Abm":[4,3,4,2],
   "C/B":[4,0,0,3],"G6":[0,2,0,2],"Cm6":[2,3,3,3],"Bbdim":[0,1,0,1],"Adim":[2,3,2,3],"Ddim":[1,2,1,2],
-  "A6":[2,4,2,4],"D6":[2,2,2,2],"E6":[1,0,2,0],"F6":[2,2,1,3],"Gadd9":[0,2,0,0],"Fadd9":[0,0,1,0],
+  "A6":[2,4,2,4],"D6":[2,2,2,2],"E6":[1,1,0,2],"F6":[2,2,1,3],"Fadd9":[0,0,1,0],
 };
-function chordSVG(name){
-  let frets = SHAPES[name];
-  if (!frets){ // fall back: drop slash bass, then trim extensions / enharmonic
-    const base = name.replace(/\/.*$/, "");                 // C/E -> C, Am/G -> Am
-    const cands = [base, name.replace(/maj7/,"M7"), base.replace(/maj7/,"M7"),
-                   name.replace(/7$/,""), base.replace(/(sus[24]|add\d|dim|aug|maj7|M7|[469]|7)$/,""),
-                   base.replace(/m$/,"")];
-    for (const c of cands){ if (c && SHAPES[c]){ frets = SHAPES[c]; break; } }
-    if (!frets) return null;
-  }
+/** draw a 4-string diagram; shapes above the 4th fret slide the window and show "5fr" etc. */
+function chordDiagram(frets, name){
+  const nz = frets.filter(f => f > 0), maxF = nz.length ? Math.max(...nz) : 0, minF = nz.length ? Math.min(...nz) : 1;
+  const base = maxF > 4 ? minF : 1;
   const W=110, H=120, L=16, T=22, cw=(W-L*2)/3, rows=4, rh=(H-T-14)/rows;
   let p = `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${esc(name)} chord diagram">`;
-  p += `<rect x="${L}" y="${T}" width="${cw*3}" height="4" rx="1" fill="var(--ink)"/>`;
+  p += base === 1 ? `<rect x="${L}" y="${T}" width="${cw*3}" height="4" rx="1" fill="var(--ink)"/>`
+                  : `<text x="${L+cw*3+5}" y="${T+rh*.7}" font-size="10" fill="var(--muted)">${base}fr</text>`;
   for (let i=0;i<4;i++) p += `<line x1="${L+cw*i}" y1="${T}" x2="${L+cw*i}" y2="${T+rh*rows}" stroke="var(--line)" stroke-width="1.4"/>`;
   for (let r=0;r<=rows;r++) p += `<line x1="${L}" y1="${T+rh*r}" x2="${L+cw*3}" y2="${T+rh*r}" stroke="var(--line)" stroke-width="1.4"/>`;
   frets.forEach((f,i) => {
     const x = L + cw*i;
     if (f === -1){ p += `<text x="${x}" y="${T-6}" text-anchor="middle" font-size="11" fill="var(--muted)">×</text>`; }
     else if (f === 0){ p += `<circle cx="${x}" cy="${T-9}" r="4" fill="none" stroke="var(--ink)" stroke-width="1.6"/>`; }
-    else { p += `<circle cx="${x}" cy="${T + rh*(f-0.5)}" r="7" fill="var(--accent)"/>`; }
+    else { p += `<circle cx="${x}" cy="${T + rh*(f-base+0.5)}" r="7" fill="var(--accent)"/>`; }
   });
-  p += `</svg>`;
-  return p;
+  return p + `</svg>`;
 }
+function chordSVG(name){ const s = shapeFor(name); return s ? chordDiagram(s.frets, name) : null; }
 let _chordPop = null;
 function showChordPop(name, anchor){
   closeChordPop();
@@ -1632,6 +1972,350 @@ function showChordPop(name, anchor){
   function onDocClick(e){ if (!pop.contains(e.target)) closeChordPop(); }
 }
 function closeChordPop(){ if (_chordPop){ _chordPop.remove(); _chordPop = null; } }
+
+/* ==========================================================================
+   CHORD THEORY  —  parse / transpose chord names, build ukulele shapes, read guitar fingerings.
+   The hand-made SHAPES table (from Vera's chord charts) always wins; shapes for any other chord
+   are generated by searching the fretboard for a playable voicing.
+   ========================================================================== */
+const SHARP_NAMES = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+const FLAT_NAMES  = ["C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"];
+const MIXED_NAMES = ["C","C#","D","Eb","E","F","F#","G","Ab","A","Bb","B"];     // usual chord-sheet spelling
+const NOTE_BASE = { C:0, D:2, E:4, F:5, G:7, A:9, B:11 };
+const noteToPc = n => { const m = /^([A-G])([#b♯♭]?)$/.exec(n || ""); if (!m) return null;
+  return (NOTE_BASE[m[1]] + (/[#♯]/.test(m[2]) ? 1 : m[2] ? -1 : 0) + 12) % 12; };
+const QUALITIES = {   // chord quality -> semitone intervals above the root
+  "":[0,4,7], m:[0,3,7], "7":[0,4,7,10], maj7:[0,4,7,11], m7:[0,3,7,10], sus4:[0,5,7], sus2:[0,2,7],
+  dim:[0,3,6], dim7:[0,3,6,9], m7b5:[0,3,6,10], aug:[0,4,8], "6":[0,4,7,9], m6:[0,3,7,9], add9:[0,2,4,7],
+  "9":[0,2,4,7,10], maj9:[0,2,4,7,11], m9:[0,2,3,7,10], "7sus4":[0,5,7,10], "5":[0,7], mmaj7:[0,3,7,11] };
+const QUAL_ALIAS = { maj:"", M:"", min:"m", "-":"m", "M7":"maj7", "Maj7":"maj7", "Δ":"maj7", "Δ7":"maj7", "+":"aug", sus:"sus4",
+  dom7:"7", "ø":"m7b5", "m7-5":"m7b5", "m7♭5":"m7b5", "°":"dim", "°7":"dim7", min7:"m7", "-7":"m7", add2:"add9", "2":"sus2",
+  "m(maj7)":"mmaj7", "mM7":"mmaj7", "7sus":"7sus4" };
+
+/** "F#m7/C#" -> { root, rootName, qual, key, exact, bass, bassName } or null */
+function parseChord(name){
+  const m = /^([A-G][#b♯♭]?)([^/]*)(?:\/([A-G][#b♯♭]?))?$/.exec(String(name || "").trim());
+  if (!m) return null;
+  const q = m[2];
+  if (!/^[A-Za-z0-9#b+\-°øΔ♭()]*$/.test(q)) return null;
+  let key = q in QUAL_ALIAS ? QUAL_ALIAS[q] : q, exact = key in QUALITIES;
+  if (!exact){                       // unknown extension (C13, Cm11 …): fall back to the family
+    if (/^m(?!aj)/.test(q)) key = /7|9|11|13/.test(q) ? "m7" : "m";
+    else if (/maj/i.test(q)) key = "maj7";
+    else if (/sus2/.test(q)) key = "sus2";
+    else if (/sus/.test(q)) key = "sus4";
+    else if (/dim/.test(q)) key = "dim";
+    else if (/aug|\+/.test(q)) key = "aug";
+    else if (/7|9|11|13/.test(q)) key = "7";
+    else key = "";
+  }
+  return { root:noteToPc(m[1]), rootName:m[1], qual:q, key, exact, bass: m[3] ? noteToPc(m[3]) : null, bassName: m[3] || null };
+}
+const isChordName = s => { const c = parseChord(s); return !!c && (c.exact || /^(m|maj|M|min|dim|aug|sus|add|\+|-|°|ø|Δ|\d|\()/.test(c.qual) || c.qual === ""); };
+function pcName(pc, style){ return ({ sharp:SHARP_NAMES, flat:FLAT_NAMES, mixed:MIXED_NAMES }[style] || MIXED_NAMES)[((pc % 12) + 12) % 12]; }
+
+/** transpose a chord name by n semitones; keepBass=false drops the "/bass" part (a ukulele has no low bass) */
+function transposeChord(name, n, keepBass){
+  const c = parseChord(name); if (!c) return name;
+  const style = /#|♯/.test(c.rootName) ? "sharp" : /b|♭/.test(c.rootName) ? "flat" : "mixed";
+  const bass = c.bassName && keepBass ? "/" + pcName(c.bass + n, /b|♭/.test(c.rootName + c.bassName) ? "flat" : "sharp") : "";
+  return pcName(c.root + n, style) + c.qual + bass;
+}
+
+const UKE_OPEN = [7, 0, 4, 9];           // G C E A as pitch classes (re-entrant gCEA)
+/** search the first frets for the easiest voicing that contains the chord's defining notes and nothing else */
+function genUkeShape(root, key){
+  const iv = QUALITIES[key]; if (!iv) return null;
+  const tones = iv.map(i => (root + i) % 12), allowed = new Set(tones);
+  const need = (tones.length <= 3 || key === "5") ? tones : tones.filter((_, k) => iv[k] !== 7);   // 4+ note chords: drop the 5th
+  for (const MAX of [7, 12]){
+    let best = null;
+    for (let a = 0; a <= MAX; a++) for (let b = 0; b <= MAX; b++) for (let c = 0; c <= MAX; c++) for (let d = 0; d <= MAX; d++){
+      const f = [a, b, c, d], pcs = f.map((x, i) => (UKE_OPEN[i] + x) % 12);
+      if (!pcs.every(p => allowed.has(p)) || !need.every(p => pcs.includes(p))) continue;
+      const nz = f.filter(x => x > 0), span = nz.length ? Math.max(...nz) - Math.min(...nz) : 0;
+      if (span > 3) continue;
+      const score = f.reduce((s, x) => s + x, 0) + span * 2 + (tones.every(p => pcs.includes(p)) ? 0 : 1.5);
+      if (!best || score < best.score) best = { f, score };
+    }
+    if (best) return best.f;
+  }
+  return null;
+}
+
+/** table lookup only: the exact name, or the same chord spelled with the other accidental (C#/Db), or minus a slash bass */
+function chordFrets(name){
+  if (SHAPES[name]) return SHAPES[name];
+  const base = name.replace(/\/.*$/, ""), c = parseChord(base);
+  const alts = c && c.root != null ? [pcName(c.root, "sharp"), pcName(c.root, "flat")].map(r => r + c.qual) : [];
+  for (const cand of [base, ...alts]) if (SHAPES[cand]) return SHAPES[cand];
+  return null;
+}
+/** best ukulele fingering for any chord name: your table -> a generated voicing -> (odd names) the plain chord */
+function shapeFor(name){
+  const f = chordFrets(name); if (f) return { frets:f, generated:false };
+  const base = name.replace(/\/.*$/, ""), c = parseChord(base);
+  if (c && c.root != null){ const g = genUkeShape(c.root, c.key); if (g) return { frets:g, generated:true, approx:!c.exact }; }
+  for (const cand of [base.replace(/maj7/, "M7"), base.replace(/7$/, ""), base.replace(/(sus[24]|add\d|dim|aug|maj7|M7|[469]|7)$/, ""), base.replace(/m$/, "")])
+    if (cand && SHAPES[cand]) return { frets:SHAPES[cand], generated:true, approx:true };
+  return null;
+}
+
+/** read a guitar fingering like "x32010" or "x-3-2-0-1-0" and name the chord */
+const GUITAR_OPEN = [40, 45, 50, 55, 59, 64];                    // E2 A2 D3 G3 B3 E4
+function parseFingering(s){
+  s = String(s).trim().replace(/[()]/g, "");
+  let parts = /^[xX\d]{6}$/.test(s) ? s.split("") : /^[xX\d]{1,2}([-,. ][xX\d]{1,2}){5}$/.test(s) ? s.split(/[-,. ]/) : null;
+  if (!parts) return null;
+  return parts.map(p => /x/i.test(p) ? null : parseInt(p, 10));
+}
+function identifyFingering(s){
+  const fr = parseFingering(s); if (!fr || fr.filter(x => x != null).length < 3) return null;
+  const midis = fr.map((f, i) => f == null ? null : GUITAR_OPEN[i] + f).filter(x => x != null);
+  const pcs = [...new Set(midis.map(m => m % 12))], bass = Math.min(...midis) % 12;
+  const order = ["", "m", "7", "maj7", "m7", "sus4", "sus2", "dim", "aug", "6", "m6", "add9", "dim7", "m7b5", "9", "5"];
+  let best = null;
+  for (const exact of [true, false]) {
+    for (const root of pcs) for (const q of order){
+      const tones = QUALITIES[q].map(i => (root + i) % 12);
+      if (!pcs.every(p => tones.includes(p))) continue;
+      if (exact ? tones.length !== pcs.length : !(pcs.includes(root) && (pcs.includes(tones[1]) || q === "5"))) continue;
+      const score = order.indexOf(q) + (root === bass ? 0 : 3);
+      if (!best || score < best.score) best = { root, q, score };
+    }
+    if (best) break;
+  }
+  if (!best) return null;
+  return pcName(best.root, "mixed") + best.q + (bass !== best.root ? "/" + pcName(bass, "mixed") : "");
+}
+
+const SOLFEGE = { C:"Do", D:"Re", E:"Mi", F:"Fa", G:"Sol", A:"La", B:"Si" };
+const solfegeName = n => String(n).replace(/^([A-G])/, (_, l) => SOLFEGE[l]).replace(/\/([A-G])/, (_, l) => "/" + SOLFEGE[l]);
+const chordLabel = (n, mode) => mode === "solfege" ? solfegeName(n) : n;
+
+/* ---------------------------------------------------------------- guitar chord sheet -> ukulele
+   Accepts chord-over-lyric text (Ultimate-Guitar style), ChordPro "[C]" text, bare chord lines and
+   guitar fingerings ("x32010"). Returns inline [Chord] text + the list of ukulele chords. */
+function guitarToken(tok, semis, keepBass){
+  const f = identifyFingering(tok);
+  const name = f || tok.replace(/[()]/g, "");
+  return isChordName(name) ? transposeChord(name, semis, keepBass) : null;
+}
+const isChordTokenText = t => !!(identifyFingering(t) || (isChordName(t.replace(/[()]/g, "")) && /^[A-G]/.test(t.replace(/[()]/g, ""))));
+const isChordOnlyLine = l => { const t = l.trim().split(/\s+/).filter(Boolean);
+  return t.length > 0 && t.every(x => isChordTokenText(x) || /^(\||\/|-|x\d+|\(?\d+x\)?|N\.?C\.?)$/i.test(x)) && t.some(isChordTokenText); };
+const VOWELS = "aeiouáàâãéêíóôõúü";
+function placeChord(ly, c){          // same rule as the PDF importer: space -> next word, early letters -> word start, deeper -> syllable
+  if (c >= ly.length) return ly.length;
+  if (ly[c] === " "){ while (c < ly.length && ly[c] === " ") c++; return c; }
+  let s = c; while (s > 0 && ly[s - 1] !== " ") s--;
+  if (c - s < 3) return s;
+  const isV = ch => VOWELS.includes(ch.toLowerCase()), isL = ch => /[a-zà-ÿ]/i.test(ch);
+  while (isV(ly[c]) && c - 1 >= s && isV(ly[c - 1])) c--;                                // inside a vowel run (qui-e, ou, ai): back to its start
+  if (isV(ly[c]) && c - 1 >= s && isL(ly[c - 1]) && !isV(ly[c - 1])) c--;                // vowel -> its onset consonant
+  const X = ly[c].toLowerCase();
+  if (isL(X) && !isV(X) && c - 1 >= s){                                                   // keep digraphs / clusters together
+    const pv = ly[c - 1].toLowerCase();
+    if (["lh","nh","ch","rr","ss","qu","gu","th","sh","ph","wh"].includes(pv + X) || (pv === "s" && "tpkc".includes(X)) || ("rl".includes(X) && "bcdfgpt".includes(pv))) c--;
+  }
+  return c;
+}
+function convertGuitarChords(text, { semis = 0, keepBass = false } = {}){
+  const lines = String(text || "").replace(/\r/g, "").replace(/\t/g, "    ").split("\n");
+  const seen = [], note = n => { if (n && !seen.includes(n)) seen.push(n); return n; };
+  const out = []; let i = 0;
+  while (i < lines.length){
+    const l = lines[i];
+    if (/\[[A-G][^\]]*\]/.test(l)){                                   // ChordPro: convert what is inside the brackets
+      out.push(l.replace(/\[([^\]]+)\]/g, (m, c) => { const t = guitarToken(c, semis, keepBass); return t ? "[" + note(t) + "]" : m; }));
+      i++; continue;
+    }
+    if (isChordOnlyLine(l)){
+      const nxt = lines[i + 1];
+      const hasLyric = nxt != null && nxt.trim() && !isChordOnlyLine(nxt) && !/^\s*\[[^\]]+\]\s*$/.test(nxt) && !/^\s*[A-G]?\s?\|.*--/.test(nxt);
+      const found = []; for (const m of l.matchAll(/\S+/g)){ const t = guitarToken(m[0], semis, keepBass); if (t) found.push({ col:m.index, t: note(t) }); }
+      if (hasLyric){
+        let ly = nxt.replace(/\s+$/, "");
+        const ins = found.map((f, idx) => ({ at: placeChord(ly, Math.min(f.col, ly.length)), t:f.t, idx }));
+        for (const f of ins.sort((a, b) => b.at - a.at || b.idx - a.idx)) ly = ly.slice(0, f.at) + "[" + f.t + "]" + ly.slice(f.at);   // right to left; chords sharing a spot keep their order
+        out.push(ly.trim()); i += 2; continue;
+      }
+      out.push(found.map(f => "[" + f.t + "]").join(" ")); i++; continue;
+    }
+    out.push(l.replace(/\s+$/, "")); i++;
+  }
+  return { text: out.join("\n").replace(/\n{3,}/g, "\n\n").trim(), chords: seen };
+}
+
+/* ---------------------------------------------------------------- guitar tab -> ukulele tab
+   Notes keep their pitch: a guitar note is moved to the closest octave a ukulele (gCEA) can reach and
+   put on the string with the lowest fret. */
+const GTAB_MIDI = [64, 59, 55, 50, 45, 40];                          // e B G D A E (top line first)
+const UTAB_ROWS = [["A", 69], ["E", 64], ["C", 60], ["G", 67]];      // top line first
+const isGuitarTabLine = l => /^\s*[eEBGDA]\s*\|.*-/.test(l);
+function ukeAssign(midis){
+  const opts = midis.map(m => { const a = [];
+    for (let k = -4; k <= 4; k++) for (let si = 0; si < 4; si++){ const f = m + 12 * k - UTAB_ROWS[si][1]; if (f >= 0 && f <= 12) a.push({ si, f, k:Math.abs(k), cost:Math.abs(k) * 40 + f }); }
+    return a.sort((x, y) => x.cost - y.cost); });
+  let best = null;
+  (function dfs(idx, used, picked, cost){
+    if (best && cost >= best.cost) return;
+    if (idx === midis.length){ best = { picked:picked.slice(), cost }; return; }
+    for (const o of opts[idx]) if (!used.has(o.si)){ used.add(o.si); picked.push(o); dfs(idx + 1, used, picked, cost + o.cost); picked.pop(); used.delete(o.si); }
+  })(0, new Set(), [], 0);
+  if (best) return { picked:best.picked, dropped:0 };
+  // too many notes for four strings: keep as many as fit, highest first
+  const order = midis.map((m, i) => i).sort((a, b) => midis[b] - midis[a]), used = new Set(), picked = new Array(midis.length).fill(null);
+  for (const i of order){ const o = opts[i].find(x => !used.has(x.si)); if (o){ used.add(o.si); picked[i] = o; } }
+  return { picked, dropped:picked.filter(p => !p).length };
+}
+function convertGuitarTab(text, semis = 0){
+  const lines = String(text || "").replace(/\r/g, "").split("\n"), out = [], stats = { notes:0, moved:0, merged:0, dropped:0, blocks:0 };
+  for (let i = 0; i < lines.length;){
+    if (lines.slice(i, i + 6).length === 6 && lines.slice(i, i + 6).every(isGuitarTabLine)){
+      const rows = lines.slice(i, i + 6).map(l => l.slice(l.indexOf("|") + 1));
+      const len = Math.max(...rows.map(r => r.length)); stats.blocks++;
+      const cols = Array.from({ length:len }, () => ({ ev:[], bar:false, cont:new Set() }));
+      rows.forEach((r, ri) => { for (let c = 0; c < r.length; c++){
+        if (/\d/.test(r[c]) && !(c > 0 && /\d/.test(r[c - 1]))){
+          const two = /\d/.test(r[c + 1] || "") && parseInt(r.slice(c, c + 2), 10) <= 24;
+          cols[c].ev.push({ ri, fret:parseInt(two ? r.slice(c, c + 2) : r[c], 10) }); if (two) cols[c + 1].cont.add(ri);
+        } else if (r[c] === "|") cols[c].bar = true; } });
+      const res = UTAB_ROWS.map(([n]) => n + "|");
+      cols.forEach(col => {
+        if (col.ev.length){
+          let midis = col.ev.map(e => GTAB_MIDI[e.ri] + e.fret + semis);
+          stats.notes += midis.length;
+          if (midis.length > 4){                         // a 5–6 string chord: the same note in two octaves is only needed once
+            const keep = new Map(); midis.forEach(m => { const pc = m % 12; if (!keep.has(pc) || m > keep.get(pc)) keep.set(pc, m); });
+            const before = midis.length; midis = [...keep.values()].sort((a, b) => b - a); stats.merged += before - midis.length;
+          }
+          const a = ukeAssign(midis);
+          const toks = ["", "", "", ""]; a.picked.forEach(p => { if (p){ toks[p.si] = String(p.f); if (p.k) stats.moved++; } else stats.dropped++; });
+          const w = Math.max(1, ...toks.map(t => t.length));
+          toks.forEach((t, si) => { res[si] += t.padEnd(w, "-"); });
+        } else { const ch = col.bar ? "|" : "-"; for (let si = 0; si < 4; si++) res[si] += ch; }
+      });
+      res.forEach((r, si) => { out.push(r); });
+      i += 6; continue;
+    }
+    out.push(lines[i]); i++;
+  }
+  return { text: out.join("\n"), stats };
+}
+
+/* ==========================================================================
+   CHORDS PAGE  —  chord chart (from Vera's charts) + guitar → ukulele converter
+   ========================================================================== */
+let _chordsTab = "chart", _convMode = "chords", _convSemis = 0, _convBass = false;
+const _convText = { chords:"", tab:"" };
+const CHART_ROWS = [["Major",""], ["Minor","m"], ["7th","7"], ["Major 7th","maj7"], ["Minor 7th","m7"]];
+const CHART_ROOTS = ["C","D","E","F","G","A","B"];
+
+function chordCard(name, shape, mode){
+  const card = el("div", { class:"cp-card" + (shape ? "" : " none") },
+    el("div", { class:"cp-name" }, chordLabel(name, mode)),
+    shape ? el("div", { class:"cp-dia", html: chordDiagram(shape.frets, name) }) : el("div", { class:"cp-none" }, "–"));
+  if (shape && shape.generated) card.append(el("div", { class:"cp-tag", title:"Not in your chart — a playable voicing worked out for you" }, "suggested"));
+  return card;
+}
+
+function renderChords(root){
+  destroyPractice();
+  root.replaceChildren();
+  root.append(el("h2", { style:"font-size:26px;margin-bottom:4px" }, "Chords"),
+    el("p", { class:"cp-sub" }, "Your chord chart, and a converter that turns guitar chords or tab into ukulele."));
+  const seg = el("div", { class:"seg-ctrl", role:"group", "aria-label":"Chords section", style:"margin:12px 0 18px" });
+  [["chart","Chord chart"],["convert","Guitar → Ukulele"]].forEach(([k, l]) =>
+    seg.append(el("button", { "aria-pressed": _chordsTab === k ? "true" : "false", onclick:() => { _chordsTab = k; renderChords(root); } }, l)));
+  const body = el("div", {});
+  root.append(seg, body);
+  (_chordsTab === "chart" ? paintChordChart : paintConverter)(body);
+}
+
+function paintChordChart(box){
+  const mode = State.prefs.chordNames || "letters";
+  const top = el("div", { class:"cp-top" });
+  const names = el("div", { class:"seg-ctrl", role:"group", "aria-label":"Chord names" });
+  [["letters","C D E"],["solfege","Do Re Mi"]].forEach(([k, l]) =>
+    names.append(el("button", { "aria-pressed": mode === k ? "true" : "false", onclick:() => { State.prefs = { chordNames:k }; renderChords($("#view")); } }, l)));
+  // look up any chord by name
+  const out = el("div", { class:"cp-find-out" });
+  const input = el("input", { class:"cp-find", type:"text", placeholder:"Find any chord — e.g. F#m7, Bbmaj7, Csus4", "aria-label":"Find a chord", autocomplete:"off", spellcheck:"false" });
+  input.addEventListener("input", () => {
+    out.replaceChildren(); const v = input.value.trim(); if (!v) return;
+    const c = parseChord(v), s = c && c.root != null ? shapeFor(pcName(c.root, /b/.test(c.rootName) ? "flat" : /#/.test(c.rootName) ? "sharp" : "mixed") + c.qual) : null;
+    out.append(s ? chordCard(v, s, mode) : el("span", { class:"cp-hint" }, "Not a chord name I recognise."));
+  });
+  top.append(names, input, out);
+  box.append(top);
+  CHART_ROWS.forEach(([title, suffix]) => {
+    const row = el("div", { class:"cp-grid" });
+    CHART_ROOTS.forEach(r => row.append(chordCard(r + suffix, shapeFor(r + suffix), mode)));
+    box.append(el("h3", { class:"cp-h" }, title), row);
+  });
+  box.append(el("p", { class:"cp-foot" }, "Standard tuning g‑C‑E‑A · ● finger · ○ open string. Shapes marked “suggested” are worked out automatically."));
+}
+
+function paintConverter(box){
+  const chordsMode = _convMode === "chords";
+  const controls = el("div", { class:"cp-controls" });
+  const modeSeg = el("div", { class:"seg-ctrl", role:"group", "aria-label":"Convert" });
+  [["chords","Chords"],["tab","Tab"]].forEach(([k, l]) =>
+    modeSeg.append(el("button", { "aria-pressed": _convMode === k ? "true" : "false", onclick:() => { _convMode = k; renderChords($("#view")); } }, l)));
+  const semisLbl = el("span", { class:"tn-a4v" }, `Transpose ${_convSemis > 0 ? "+" : ""}${_convSemis}`);
+  const bump = d => { _convSemis = Math.max(-11, Math.min(11, _convSemis + d)); semisLbl.textContent = `Transpose ${_convSemis > 0 ? "+" : ""}${_convSemis}`; run(); };
+  controls.append(modeSeg, el("span", { class:"tn-a4" },
+    el("button", { class:"mini", "aria-label":"Down a semitone", onclick:() => bump(-1) }, "−"), semisLbl,
+    el("button", { class:"mini", "aria-label":"Up a semitone", onclick:() => bump(1) }, "+")));
+  let bassBox = null;
+  if (chordsMode){
+    bassBox = el("input", { type:"checkbox", checked: _convBass, onchange:e => { _convBass = e.target.checked; run(); } });
+    controls.append(el("label", { class:"check", style:"font-size:12.5px" }, bassBox, " keep bass notes (C/E)"));
+  }
+  const grid = el("div", { class:"cp-conv" });
+  const inp = el("textarea", { class:"cp-ta", spellcheck:"false", "aria-label": chordsMode ? "Guitar chords" : "Guitar tab",
+    placeholder: chordsMode
+      ? "Paste a guitar chord sheet…\n\nG        D\nHere comes the sun\nEm       C\nAnd I say it's all right\n\n(chord lines over lyrics, [G] ChordPro, or fingerings like x32010)"
+      : "Paste a guitar tab (6 lines)…\n\ne|--0--3--5--|\nB|--1--3--5--|\nG|--0--0--5--|\nD|--2--0--5--|\nA|--3--2--3--|\nE|-----3-----|" });
+  inp.value = _convText[_convMode];
+  const outEl = el("pre", { class:"cp-out", "aria-live":"polite" });
+  const info = el("div", { class:"cp-info" });
+  const actions = el("div", { class:"cp-actions" });
+  const copy = el("button", { class:"btn sm", onclick:async () => {
+    try { await navigator.clipboard.writeText(outEl.textContent); toast("Copied"); }
+    catch(e){ const r = document.createRange(); r.selectNodeContents(outEl); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected — press ⌘/Ctrl+C"); } } }, "Copy");
+  actions.append(copy);
+  let last = null;
+  if (chordsMode) actions.append(el("button", { class:"btn sm primary", onclick:() => {
+    if (last && last.text) openSongForm(null, { prefill:{ lyricsWithChords:last.text, chords:last.chords, key:last.chords[0] || "" } }); } }, "Create a song from this"));
+  const left = el("div", { class:"cp-pane" }, el("div", { class:"cp-label" }, chordsMode ? "Guitar chords" : "Guitar tab"), inp);
+  const right = el("div", { class:"cp-pane" }, el("div", { class:"cp-label" }, "Ukulele"), outEl, info, actions);
+  grid.append(left, right);
+  const shapes = el("div", { class:"cp-shapes" });
+  box.append(controls, grid, shapes);
+
+  function run(){
+    _convText[_convMode] = inp.value; shapes.replaceChildren(); info.textContent = "";
+    if (!inp.value.trim()){ outEl.textContent = ""; last = null; return; }
+    if (chordsMode){
+      last = convertGuitarChords(inp.value, { semis:_convSemis, keepBass:_convBass });
+      outEl.textContent = last.text;
+      info.textContent = last.chords.length ? `${last.chords.length} chord${last.chords.length === 1 ? "" : "s"}: ${last.chords.join("  ·  ")}` : "No chords found yet.";
+      const mode = State.prefs.chordNames || "letters", row = el("div", { class:"cp-grid" });
+      last.chords.forEach(c => row.append(chordCard(c, shapeFor(c), mode)));
+      if (last.chords.length) shapes.append(el("h3", { class:"cp-h" }, "Ukulele shapes for this song"), row);
+    } else {
+      const r = convertGuitarTab(inp.value, _convSemis); last = r; outEl.textContent = r.text;
+      info.textContent = r.stats.blocks
+        ? `${r.stats.notes} note${r.stats.notes === 1 ? "" : "s"} converted${r.stats.moved ? ` · ${r.stats.moved} moved by an octave to fit the ukulele` : ""}${r.stats.merged ? ` · ${r.stats.merged} repeated notes merged (guitar chords have 6 strings, ukulele 4)` : ""}${r.stats.dropped ? ` · ${r.stats.dropped} dropped (too many different notes at once)` : ""}`
+        : "I couldn’t find a 6‑line guitar tab (lines starting e| B| G| D| A| E|).";
+    }
+  }
+  inp.addEventListener("input", debounce(run, 120));
+  run();
+}
+
 window.addEventListener("scroll", closeChordPop, { passive:true });
 
 /* ==========================================================================
@@ -1665,8 +2349,8 @@ function field(label, control, hint){
 }
 function input(value, attrs={}){ return el("input", { type:"text", value: value ?? "", ...attrs }); }
 
-function openSongForm(existing){
-  const s = existing || {};
+function openSongForm(existing, opts={}){
+  const s = existing || opts.prefill || {};
   const isEdit = !!existing;
   const cats = Store.getCategories();
   let chords = (s.chords || []).slice();
